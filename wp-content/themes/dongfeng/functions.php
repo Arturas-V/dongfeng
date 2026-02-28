@@ -65,7 +65,6 @@ function dongfeng_setup() {
 
 
 }
-
 add_action( 'after_setup_theme', 'dongfeng_setup' );
 
 
@@ -74,9 +73,8 @@ function dongfeng_register_styles() {
 
 	$theme_version = wp_get_theme()->get( 'Version' );
 
-	wp_enqueue_style( 'twentytwenty-style', get_stylesheet_uri(), array(), $theme_version );
+	wp_enqueue_style( 'dongfeng-style', get_stylesheet_uri(), array(), $theme_version );
 }
-
 add_action( 'wp_enqueue_scripts', 'dongfeng_register_styles' );
 
 
@@ -84,21 +82,45 @@ function dongfeng_register_scripts() {
 
 	$theme_version = wp_get_theme()->get( 'Version' );
 
-	wp_enqueue_script( 'twentytwenty-js', get_template_directory_uri() . '/assets/js/index.js', array(), $theme_version );
-	wp_script_add_data( 'twentytwenty-js', 'strategy', 'defer' );
+	wp_enqueue_script( 'dongfeng-js', get_template_directory_uri() . '/assets/js/index.js', array(), $theme_version );
+	wp_script_add_data( 'dongfeng-js', 'strategy', 'defer' );
 }
-
 add_action( 'wp_enqueue_scripts', 'dongfeng_register_scripts' );
 
 
+// Remove global styles (Gutenberg)
+remove_action('wp_enqueue_scripts', 'wp_enqueue_global_styles');
+remove_action('wp_footer', 'wp_enqueue_global_styles', 1);
+
+add_action('init', 'completely_deregister_annoying_styles');
+function completely_deregister_annoying_styles() {
+    // Remove the actual handles (not just inline)
+    wp_deregister_style('wp-img-auto-sizes-contain');
+    wp_deregister_style('wp-block-library');
+    wp_deregister_style('classic-theme-styles');
+    wp_deregister_style('global-styles');
+}
+
+// Disable sizes=auto being added to <img> tags (WP 6.7+)
+add_filter('wp_img_tag_add_auto_sizes', '__return_false');
+
+// Disable Gutenberg for posts
+add_filter('use_block_editor_for_post', '__return_false', 10);
+
+// Disable Gutenberg for widgets
+add_filter('use_widgets_block_editor', '__return_false');
+
+// Remove block styles on frontend (optional cleanup)
+add_action('wp_enqueue_scripts', function () {
+    wp_dequeue_style('wp-block-library');
+    wp_dequeue_style('wp-block-library-theme');
+}, 100);
 
 
 function dongfeng_menus() {
 
 	$locations = array(
-		'primary'  => __( 'Desktop Horizontal Menu', 'twentytwenty' ),
-		'expanded' => __( 'Desktop Expanded Menu', 'twentytwenty' ),
-		'mobile'   => __( 'Mobile Menu', 'twentytwenty' ),
+		'primary'  => __( 'Main Menu', 'twentytwenty' ),
 		'footer'   => __( 'Footer Menu', 'twentytwenty' ),
 		'social'   => __( 'Social Menu', 'twentytwenty' ),
 	);
@@ -155,7 +177,6 @@ function dongfeng_get_custom_logo( $html ) {
 
 	return $html;
 }
-
 add_filter( 'get_custom_logo', 'dongfeng_get_custom_logo' );
 
 
@@ -196,6 +217,5 @@ function dongfeng_sidebar_registration() {
 		)
 	);
 }
-
 add_action( 'widgets_init', 'dongfeng_sidebar_registration' );
 
