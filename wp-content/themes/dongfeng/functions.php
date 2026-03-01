@@ -120,9 +120,11 @@ add_action('wp_enqueue_scripts', function () {
 function dongfeng_menus() {
 
 	$locations = array(
-		'primary'  => __( 'Main Menu', 'twentytwenty' ),
-		'footer'   => __( 'Footer Menu', 'twentytwenty' ),
-		'social'   => __( 'Social Menu', 'twentytwenty' ),
+		'primary_1'   => __( 'Modeliai', 'dongfeng' ),
+		'primary_2'   => __( 'Servisas ir Garantija', 'dongfeng' ),
+		'primary_3'   => __( 'Savininkams', 'dongfeng' ),
+		'primary_4'   => __( 'Apie Mus', 'dongfeng' ),
+		'primary_5'   => __( 'Pasiūlymai', 'dongfeng' ),
 	);
 
 	register_nav_menus( $locations );
@@ -198,9 +200,9 @@ function dongfeng_sidebar_registration() {
 		array_merge(
 			$shared_args,
 			array(
-				'name'        => __( 'Footer #1', 'twentytwenty' ),
+				'name'        => __( 'Footer #1', 'dongfeng' ),
 				'id'          => 'sidebar-1',
-				'description' => __( 'Widgets in this area will be displayed in the first column in the footer.', 'twentytwenty' ),
+				'description' => __( 'Widgets in this area will be displayed in the first column in the footer.', 'dongfeng' ),
 			)
 		)
 	);
@@ -210,9 +212,9 @@ function dongfeng_sidebar_registration() {
 		array_merge(
 			$shared_args,
 			array(
-				'name'        => __( 'Footer #2', 'twentytwenty' ),
+				'name'        => __( 'Footer #2', 'dongfeng' ),
 				'id'          => 'sidebar-2',
-				'description' => __( 'Widgets in this area will be displayed in the second column in the footer.', 'twentytwenty' ),
+				'description' => __( 'Widgets in this area will be displayed in the second column in the footer.', 'dongfeng' ),
 			)
 		)
 	);
