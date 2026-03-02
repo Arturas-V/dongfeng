@@ -881,3 +881,21 @@
   // Initialize
   slideTo(0, false);
 })();
+
+/**
+ * Hero Scroll Down Button
+ * Smooth scroll 100vh down when clicking the action button
+ */
+(() => {
+  const scrollBtn = document.querySelector('.generic-hero__action-btn');
+  if (!scrollBtn) return;
+
+  scrollBtn.addEventListener('click', () => {
+    const viewportHeight = window.innerHeight;
+
+    window.scrollTo({
+      top: viewportHeight,
+      behavior: 'smooth'
+    });
+  });
+})();

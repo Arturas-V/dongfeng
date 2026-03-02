@@ -15,10 +15,17 @@ get_header();
 		<div class="hero__slider" data-hero-slider>
 			<div class="hero__track">
 				<article class="hero__slide hero__slide--one">
+					<picture class="hero__slide-image">
+						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-1.webp" media="(min-width: 1400px)">
+						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-1-1440x810.webp" media="(min-width: 1200px)">
+						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-1-1200x675.webp" media="(min-width: 992px)">
+						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-1-1000x563.webp" media="(min-width: 768px)">
+						<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-1-780x439.webp" alt="Smiling couple in modern Dongfeng Box cabin with light-colored panel finish">
+					</picture>
 					<div class="hero__overlay"></div>
 					<div class="hero__content">
-						<p class="hero__eyebrow">Special leasing and affordable performance. Your family in comfort and safety on every trip.</p>
 						<h1>Voyah Dream</h1>
+						<p class="hero__eyebrow">Special leasing and affordable performance. Your family in comfort and safety on every trip.</p>
 						<div class="hero__actions">
 							<a class="button button--light" href="#">Find out more</a>
 						</div>
@@ -26,10 +33,17 @@ get_header();
 				</article>
 
 				<article class="hero__slide hero__slide--two">
+					<picture class="hero__slide-image">
+						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-2.webp" media="(min-width: 1400px)">
+						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-2-1440x960.webp" media="(min-width: 1200px)">
+						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-2-1200x800.webp" media="(min-width: 992px)">
+						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-2-1000x667.webp" media="(min-width: 768px)">
+						<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-2-780x520.webp" alt="Woman sitting in Dongfeng Box cabin where front seats are folded to create relaxation area">
+					</picture>
 					<div class="hero__overlay"></div>
 					<div class="hero__content">
-						<p class="hero__eyebrow">Electric range that keeps up with your workweek and weekend escape.</p>
 						<h1>Voyah Free EV</h1>
+						<p class="hero__eyebrow">Electric range that keeps up with your workweek and weekend escape.</p>
 						<div class="hero__actions">
 							<a class="button button--light" href="#">Find out more</a>
 						</div>
@@ -37,10 +51,17 @@ get_header();
 				</article>
 
 				<article class="hero__slide hero__slide--three">
+					<picture class="hero__slide-image">
+						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort3.jpg" media="(min-width: 1400px)">
+						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort3.jpg" media="(min-width: 1200px)">
+						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort3-1200x694.jpg" media="(min-width: 992px)">
+						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort3-1000x578.jpg" media="(min-width: 768px)">
+						<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort3-780x451.jpg" alt="Family enjoying ride in comfortable interior of Dongfeng Box electric car">
+					</picture>
 					<div class="hero__overlay"></div>
 					<div class="hero__content">
-						<p class="hero__eyebrow">Premium hybrid performance for confident long-distance travel.</p>
 						<h1>Voyah Passion</h1>
+						<p class="hero__eyebrow">Premium hybrid performance for confident long-distance travel.</p>
 						<div class="hero__actions">
 							<a class="button button--light" href="#">Find out more</a>
 						</div>
@@ -48,10 +69,17 @@ get_header();
 				</article>
 
 				<article class="hero__slide hero__slide--four">
+					<picture class="hero__slide-image">
+						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort2.jpg" media="(min-width: 1400px)">
+						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort2.jpg" media="(min-width: 1200px)">
+						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort2-1200x674.jpg" media="(min-width: 992px)">
+						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort2-1000x562.jpg" media="(min-width: 768px)">
+						<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort2-780x438.jpg" alt="Mother and daughter spending cozy time in spacious Dongfeng Box trunk against city backdrop">
+					</picture>
 					<div class="hero__overlay"></div>
 					<div class="hero__content">
-						<p class="hero__eyebrow">City-focused agility with standout design and smart tech.</p>
 						<h1>Dongfeng Mage</h1>
+						<p class="hero__eyebrow">City-focused agility with standout design and smart tech.</p>
 						<div class="hero__actions">
 							<a class="button button--light" href="#">Find out more</a>
 						</div>

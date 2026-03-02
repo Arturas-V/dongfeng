@@ -9,6 +9,51 @@
  */
 
 get_header();
+
+
+// Add to functions.php
+function render_responsive_picture($image_field, $class = '', $sizes = []) {
+    if (!$image_field) return '';
+    
+    // Default sizes if none provided
+    $default_sizes = [
+        'desktop' => '2048x2048',
+        'laptop' => 'post-thumbnail',
+        'tablet' => 'large',
+        'mobile' => 'medium_large'
+    ];
+    
+    // Merge custom sizes with defaults
+    $sizes = array_merge($default_sizes, $sizes);
+    
+    // Get alt text
+    $alt = $image_field['alt'] ?: '';
+    
+    ob_start();
+    ?>
+    <picture class="<?php echo esc_attr($class); ?>">
+        <source 
+            srcset="<?php echo esc_url($image_field['sizes'][$sizes['desktop']]); ?>" 
+            media="(min-width: 1200px)"
+        >
+        <source 
+            srcset="<?php echo esc_url($image_field['sizes'][$sizes['laptop']]); ?>" 
+            media="(min-width: 1024px)"
+        >
+        <source 
+            srcset="<?php echo esc_url($image_field['sizes'][$sizes['tablet']]); ?>" 
+            media="(min-width: 768px)"
+        >
+        <img 
+            src="<?php echo esc_url($image_field['sizes'][$sizes['mobile']]); ?>" 
+            alt="<?php echo esc_attr($alt); ?>"
+            decoding="async"
+            loading="lazy"
+        >
+    </picture>
+    <?php
+    return ob_get_clean();
+}
 ?>
 
 <main id="site-content" class="car-page">
@@ -17,69 +62,68 @@ get_header();
 
 	<section class="car-specs-bar">
 		<div class="car-specs__car-image">
-			<picture class="car-specs__car-image-img"">
-				<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Sizes-1.jpg" media="(min-width: 1400px)">
-				<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Sizes-1.jpg" media="(min-width: 1200px)">
-				<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Sizes-1-1200x800.jpg" alt="Urban electric car Dongfeng Box in blue color with white roof">
-			</picture>
+			<?php
+				$spec_image = get_field('car_spec_image');
+				echo render_responsive_picture($spec_image, 'car-specs__car-image-img');
+			 ?>
 		</div>
 		<div class="car-specs-bar__inner">
+			<?php 
+				$ilgis = get_field_object('ilgis');
+				$plotis = get_field_object('plotis');
+				$aukstis = get_field_object('aukstis');
+				$vaziuokles_baze = get_field_object('vaziuokles_baze');
+			?>
 			<div class="car-specs-bar__item">
-				<span class="car-specs-bar__label">Ilgis</span>
-				<span class="car-specs-bar__value">3333 mm</span>
+				<span class="car-specs-bar__label"><?php echo $ilgis['label']; ?></span>
+				<span class="car-specs-bar__value"><?php echo $ilgis['value']; ?></span>
 			</div>
 			<div class="car-specs-bar__item">
-				<span class="car-specs-bar__label">Plotis</span>
-				<span class="car-specs-bar__value">4442 mm</span>
+				<span class="car-specs-bar__label"><?php echo $plotis['label']; ?></span>
+				<span class="car-specs-bar__value"><?php echo $plotis['value']; ?></span>
 			</div>
 			<div class="car-specs-bar__item">
-				<span class="car-specs-bar__label">Aukštis</span>
-				<span class="car-specs-bar__value">234 mm</span>
+				<span class="car-specs-bar__label"><?php echo $aukstis['label']; ?></span>
+				<span class="car-specs-bar__value"><?php echo $aukstis['value']; ?></span>
 			</div>
 			<div class="car-specs-bar__item">
-				<span class="car-specs-bar__label">Važiuoklės bazė</span>
-				<span class="car-specs-bar__value">2323 mm</span>
+				<span class="car-specs-bar__label"><?php echo $vaziuokles_baze['label']; ?></span>
+				<span class="car-specs-bar__value"><?php echo $vaziuokles_baze['value']; ?></span>
 			</div>
 		</div>
 	</section>
 
 	<section class="flex flex-center car-features">
-		<a href="" class="button button--dark">Registruotis bandomajam važiavimui</a>
+		<button href="" class="button button--dark"><?php echo get_field('button_text'); ?></button>
 
 		<div class="car-features__wrap flex">
 			<div class="car-features__wrap-item">
-				<picture class="car-features__wrap-item-image flex flex-center">
-					<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Sustainable-2.jpg" media="(min-width: 1400px)">
-					<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Sustainable-2.jpg" media="(min-width: 1200px)">
-					<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Sustainable-2-780x604.jpg" media="(min-width: 992px)">
-					<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Sustainable-2-780x604.jpg" alt="Bright yellow electric car Dongfeng Box driving down city street — a stylish and eco-friendly solution for everyday life">
-				</picture>
-
+				<?php
+					$spec_image = get_field('section_1_image');
+					echo render_responsive_picture($spec_image, 'car-features__wrap-item-image flex flex-center');
+				?>
 				<div class="car-features__wrap-item-text">
-					<h2>Sustainable and dynamic</h2>
-					<p>Small, smart, and 100% electric: all this makes sustainability even more elegant and easier to integrate into everyday life. Drive through city streets, park effortlessly, and enjoy its attractive looks. Join the future of driving in style, and be environmentally efficient. Sustainability has never been so easy. The top-tier version comes with a 95 horsepower electric motor and a 42.3 kWh battery that promises some 310 kilometres per charge as per the WLTP driving cycle.</p>
+					<?php echo get_field('section_1_content'); ?>
 				</div>
 			</div>
 			<div class="car-features__wrap-item">
-				<picture class="car-features__wrap-item-image flex flex-center">
-					<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Sustainable-2.jpg" media="(min-width: 1400px)">
-					<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Sustainable-2.jpg" media="(min-width: 1200px)">
-					<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Sustainable-2-780x604.jpg" media="(min-width: 992px)">
-					<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Sustainable-2-780x604.jpg" alt="Bright yellow electric car Dongfeng Box driving down city street — a stylish and eco-friendly solution for everyday life">
-				</picture>
-
+				<?php
+					$spec_image = get_field('section_2_image');
+					echo render_responsive_picture($spec_image, 'car-features__wrap-item-image flex flex-center');
+				?>
 				<div class="car-features__wrap-item-text">
-					<h2>Sustainable and dynamic</h2>
-					<p>Small, smart, and 100% electric: all this makes sustainability even more elegant and easier to integrate into everyday life. Drive through city streets, park effortlessly, and enjoy its attractive looks. Join the future of driving in style, and be environmentally efficient. Sustainability has never been so easy. The top-tier version comes with a 95 horsepower electric motor and a 42.3 kWh battery that promises some 310 kilometres per charge as per the WLTP driving cycle.</p>
+					<?php echo get_field('section_2_content'); ?>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<section class="car-gallery centered">
-		<hr>
-		<h2 class="car-gallery__title">Colours with personality</h2>
-		<p class="car-gallery__tagline">Choose from a unique colour palette that will make your car visible in the city and give it a unique flair.</p>
+		<div class="container">
+			<hr>
+			<?php echo get_field('colours_title_and_tagline'); ?>
+		</div>
+		
 		<div class="car-gallery__slider" data-car-gallery>
 			<div class="car-gallery__viewport flex flex-center">
 				<picture class="car-gallery__viewport--background">
@@ -132,165 +176,149 @@ get_header();
 	</section>
 
 	<section class="car-intro container">
-		<a href="" class="button button--dark">Registruotis bandomajam važiavimui</a>
+		<button href="" class="button button--dark"><?php echo get_field('button_text'); ?></button>
 		<hr>
 		<div class="car-intro__inner">
 			<div class="car-intro__line flex flex-row">
 				<div class="car-intro__line-image">
-					<picture>
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Doors.jpg" media="(min-width: 1200px)">
-						<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Doors-1200x900.jpg" alt="Frameless side door of Dongfeng Box car">
-					</picture>
+					<?php
+						$spec_image = get_field('intro_image_1');
+						echo render_responsive_picture($spec_image, ' ');
+					?>
 				</div>
 				<div class="car-intro__line-content">
-					<h3>Frameless doors</h3>
-					<p>Elegant and modern, frameless doors give a refined and smooth look to Box, highlighting its premium nature.</p>
+					<?php echo get_field('intro_text_1'); ?>
 				</div>
 			</div>
 			<div class="car-intro__line flex flex-row-reverse">
 				<div class="car-intro__line-image">
-					<picture>
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Lights.jpg" media="(min-width: 1200px)">
-						<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Lights-1200x900.jpg" alt="LED headlight with expressive design">
-					</picture>
+					<?php
+						$spec_image = get_field('intro_image_2');
+						echo render_responsive_picture($spec_image, ' ');
+					?>
 				</div>
 				<div class="car-intro__line-content">
-					<h3>Elegant lights</h3>
-					<p>The attractive design of the headlights creates a friendly and stylish look, providing excellent visibility and attractive lighting.</p>
+					<?php echo get_field('intro_text_2'); ?>
 				</div>
 			</div>
 			<div class="car-intro__line flex flex-row">
 				<div class="car-intro__line-image">
-					<picture>
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Handles.webp" media="(min-width: 1200px)">
-						<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Handles.webp" alt="Retractable door handles integrated into Dongfeng Box body">
-					</picture>
+					<?php
+						$spec_image = get_field('intro_image_3');
+						echo render_responsive_picture($spec_image, ' ');
+					?>
 				</div>
 				<div class="car-intro__line-content">
-					<h3>Hidden door handles</h3>
-					<p>Smooth and futuristic, the hidden door handles blend with the car’s visual design, for an elegant and innovative exterior.</p>
+					<?php echo get_field('intro_text_3'); ?>
 				</div>
 			</div>
 			<div class="car-intro__line flex flex-row-reverse">
 				<div class="car-intro__line-image">
-					<picture>
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/df-box-2-colors-2.jpg" media="(min-width: 1200px)">
-						<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/df-box-2-colors-2-1200x900.jpg" alt="Top view of Dongfeng Box with two-tone body and contrasting roof">
-					</picture>
+					<?php
+						$spec_image = get_field('intro_image_4');
+						echo render_responsive_picture($spec_image, ' ');
+					?>
 				</div>
 				<div class="car-intro__line-content">
-					<h3>Two-colour body option</h3>
-					<p>The two-colour combination makes Dongfeng BOX even more appealing with contrasting roof and body combinations.</p>
+					<?php echo get_field('intro_text_4'); ?>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<section class="car-interior flex flex-column centered">
-		<hr>
-		<h2 class="car-interior__title">Eco-friendly and elegant interiors</h2>
-		<p class="car-interior__tagline container">The interior of Dongfeng BOX impresses with the combination of comfort and modern design that it offers. Diamond-stitched leather trim and an improved infotainment touchscreen deliver a premium high-tech experience.</p>
+		<div class="container">
+			<hr>
+			<?php echo get_field('gallery_content'); ?>
+		</div>
 		<div class="car-interior__slider-container" data-interior-slider aria-live="polite">
 			<div class="car-interior__slider-track">
 			<div class="car-interior__slider-slide" role="group" aria-label="1 / 3">
-				<picture>
-					<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Df-Box-Interior-BlackWhite.jpg" media="(min-width: 1200px)">
-					<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Df-Box-Interior-BlackWhite.jpg" media="(min-width: 992px)">
-					<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Df-Box-Interior-BlackWhite.jpg" media="(min-width: 768px)">
-					<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/Df-Box-Interior-BlackWhite.jpg" alt="">
-				</picture>
+				<?php
+					$spec_image = get_field('slide_1_image');
+					echo render_responsive_picture($spec_image, ' ');
+				?>
 				<div class="car-interior__slider-caption">
-					<h3>Black with white</h3>
-					<p>The black and white interior creates a bold contrast. The seats and trim have dark black and bright white elements with smooth seams resulting in a modern look.</p>
+					<?php echo get_field('slide_1_content'); ?>
 				</div>
 			</div>
 			<div class="car-interior__slider-slide" role="group" aria-label="2 / 3">
-				<picture>
-					<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Df-Box-Interior-Black.jpg" media="(min-width: 1200px)">
-					<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Df-Box-Interior-Black.jpg" media="(min-width: 992px)">
-					<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Df-Box-Interior-Black.jpg" media="(min-width: 768px)">
-					<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/Df-Box-Interior-Black.jpg" alt="">
-				</picture>
+				<?php
+					$spec_image = get_field('slide_2_image');
+					echo render_responsive_picture($spec_image, ' ');
+				?>
 				<div class="car-interior__slider-caption">
-					<h3>Black with dark grey</h3>
-					<p>The neutral tones offer a balanced and modern look, a perfect fit for all tastes.</p>
+					<?php echo get_field('slide_2_content'); ?>
 				</div>
 			</div>
 			<div class="car-interior__slider-slide" role="group" aria-label="3 / 3">
-				<picture>
-					<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Df-Box-Interior-Violet.jpg" media="(min-width: 1200px)">
-					<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Df-Box-Interior-Violet.jpg" media="(min-width: 992px)">
-					<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Df-Box-Interior-Violet.jpg" media="(min-width: 768px)">
-					<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/Df-Box-Interior-Violet.jpg" alt="">
-				</picture>
+				<?php
+					$spec_image = get_field('slide_3_image');
+					echo render_responsive_picture($spec_image, ' ');
+				?>
 				<div class="car-interior__slider-caption">
-					<h3>Black with light purple</h3>
-					<p>The gentle lavender tones with bold white create for a unique and dynamic look. Purple highlights on the seats, dashboard, and trim add a flair of individuality and elegance.</p>
+					<?php echo get_field('slide_3_content'); ?>
 				</div>
 			</div>
 			</div>
 		</div>
 		<div class="car-interior__slider-tabs">
-			<button class="car-interior__slider-tabs-tab active" data-interior-tab="0"><img src="https://dongfengwess.lv/wp-content/uploads/2024/11/Df-Box-Interior-BlackWhite.jpg" /></button>
-			<button class="car-interior__slider-tabs-tab" data-interior-tab="1"><img src="https://dongfengwess.lv/wp-content/uploads/2024/11/Df-Box-Interior-Black.jpg"></button>
-			<button class="car-interior__slider-tabs-tab" data-interior-tab="2"><img src="https://dongfengwess.lv/wp-content/uploads/2024/11/Df-Box-Interior-Violet.jpg"></button>
+			<button class="car-interior__slider-tabs-tab active" data-interior-tab="0"><img src="<?php echo get_field('slide_1_image')['sizes']['thumbnail']; ?>" /></button>
+			<button class="car-interior__slider-tabs-tab" data-interior-tab="1"><img src="<?php echo get_field('slide_2_image')['sizes']['thumbnail']; ?>"></button>
+			<button class="car-interior__slider-tabs-tab" data-interior-tab="2"><img src="<?php echo get_field('slide_3_image')['sizes']['thumbnail']; ?>"></button>
 		</div>
 	</section>
 
 	<section class="car-specifications centered container">
-		<a href="" class="button button--dark">Registruotis bandomajam važiavimui</a>
+		<button href="" class="button button--dark"><?php echo get_field('button_text'); ?></button>
 		<hr>
 		<div class="car-specifications__wrapper">
 			<div class="car-specifications__line flex flex-row">
 				<div class="car-specifications__line-image">
 					<picture>
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-InteriorEco-768x576.jpg" media="(min-width: 1400px)">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-InteriorEco-768x576.jpg" media="(min-width: 1200px)">
-						<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-InteriorEco-768x576.jpg" alt="Dongfeng Box interior with diamond quilting on panel and doors">
+						<source srcset="<?php echo get_field('detailed_image_1')['sizes']['large']; ?>" media="(min-width: 1400px)">
+						<source srcset="<?php get_field('detailed_image_1')['sizes']['large']; ?>" media="(min-width: 1200px)">
+						<img decoding="async" src="<?php echo get_field('detailed_image_1')['sizes']['large']; ?>" alt="<?php echo get_field('detailed_image_1')['alt'] ?>">
 					</picture>
 				</div>
 				<div class="car-specifications__line-content flex flex-column">
-					<h3>Refinement in details</h3>
-					<p>The interior trim has diamond stitching that creates a stronger feel of refinement and comfort. This elaborate pattern is used on the seats, door panels, and some other parts of the trim, creating a luxurious texture that stands out while discreetly blending with the overall aesthetic of the interior.</p>
+					<?php echo get_field('detailed_content_1'); ?>
 				</div>
 			</div>
 			<div class="car-specifications__line flex flex-row-reverse">
 				<div class="car-specifications__line-image">
 					<picture>
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-InteriorEco-768x576.jpg" media="(min-width: 1400px)">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-InteriorEco-768x576.jpg" media="(min-width: 1200px)">
-						<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-InteriorEco-768x576.jpg" alt="Dongfeng Box interior with diamond quilting on panel and doors">
+						<source srcset="<?php echo get_field('detailed_image_2')['sizes']['large']; ?>" media="(min-width: 1400px)">
+						<source srcset="<?php get_field('detailed_image_2')['sizes']['large']; ?>" media="(min-width: 1200px)">
+						<img decoding="async" src="<?php echo get_field('detailed_image_2')['sizes']['large']; ?>" alt="<?php echo get_field('detailed_image_2')['alt'] ?>">
 					</picture>
 				</div>
 				<div class="car-specifications__line-content flex flex-column">
-					<h3>Refinement in details</h3>
-					<p>The interior trim has diamond stitching that creates a stronger feel of refinement and comfort. This elaborate pattern is used on the seats, door panels, and some other parts of the trim, creating a luxurious texture that stands out while discreetly blending with the overall aesthetic of the interior.</p>
+					<?php echo get_field('detailed_content_2'); ?>
 				</div>
 			</div>
 			<div class="car-specifications__line flex flex-row">
 				<div class="car-specifications__line-image">
 					<picture>
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-InteriorEco-768x576.jpg" media="(min-width: 1400px)">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-InteriorEco-768x576.jpg" media="(min-width: 1200px)">
-						<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-InteriorEco-768x576.jpg" alt="Dongfeng Box interior with diamond quilting on panel and doors">
+						<source srcset="<?php echo get_field('detailed_image_3')['sizes']['large']; ?>" media="(min-width: 1400px)">
+						<source srcset="<?php get_field('detailed_image_3')['sizes']['large']; ?>" media="(min-width: 1200px)">
+						<img decoding="async" src="<?php echo get_field('detailed_image_3')['sizes']['large']; ?>" alt="<?php echo get_field('detailed_image_3')['alt'] ?>">
 					</picture>
 				</div>
 				<div class="car-specifications__line-content flex flex-column">
-					<h3>Refinement in details</h3>
-					<p>The interior trim has diamond stitching that creates a stronger feel of refinement and comfort. This elaborate pattern is used on the seats, door panels, and some other parts of the trim, creating a luxurious texture that stands out while discreetly blending with the overall aesthetic of the interior.</p>
+					<?php echo get_field('detailed_content_3'); ?>
 				</div>
 			</div>
 			<div class="car-specifications__line flex flex-row-reverse">
 				<div class="car-specifications__line-image">
 					<picture>
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-InteriorEco-768x576.jpg" media="(min-width: 1400px)">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-InteriorEco-768x576.jpg" media="(min-width: 1200px)">
-						<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-InteriorEco-768x576.jpg" alt="Dongfeng Box interior with diamond quilting on panel and doors">
+						<source srcset="<?php echo get_field('detailed_image_4')['sizes']['large']; ?>" media="(min-width: 1400px)">
+						<source srcset="<?php get_field('detailed_image_4')['sizes']['large']; ?>" media="(min-width: 1200px)">
+						<img decoding="async" src="<?php echo get_field('detailed_image_4')['sizes']['large']; ?>" alt="<?php echo get_field('detailed_image_4')['alt'] ?>">
 					</picture>
 				</div>
 				<div class="car-specifications__line-content flex flex-column">
-					<h3>Refinement in details</h3>
-					<p>The interior trim has diamond stitching that creates a stronger feel of refinement and comfort. This elaborate pattern is used on the seats, door panels, and some other parts of the trim, creating a luxurious texture that stands out while discreetly blending with the overall aesthetic of the interior.</p>
+					<?php echo get_field('detailed_content_4'); ?>
 				</div>
 			</div>
 		</div>
@@ -299,50 +327,37 @@ get_header();
 
 	<section class="car-interior-gallery">
 		<div class="container centered">
-			<h2 class="car-interior-gallery__title">Comfort as a standard feature</h2>
-			<p class="car-interior-gallery__tagline">Enjoy comfort in BOX with a luxurious driver’s seat equipped with heating, ventilation, and memory mode. Its compact design offers plenty of space even for taller passengers, and the advanced audio system delivers an excellent driving experience. The front seats can be folded down to create a comfortable resting area in the rear.</p>
+			<?php echo get_field('slider_content'); ?>
 		</div>
 		<div class="car-interior-gallery-wrapper">
 			<div class="hero__slider" data-hero-slider>
 				<div class="hero__track">
 					<article class="hero__slide hero__slide--one">
-						<picture>
-							<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-1.webp" media="(min-width: 1400px)">
-							<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-1-1440x810.webp" media="(min-width: 1200px)">
-							<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-1-1200x675.webp" media="(min-width: 992px)">
-							<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-1-1000x563.webp" media="(min-width: 768px)">
-							<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-1-780x439.webp" alt="Smiling couple in modern Dongfeng Box cabin with light-colored panel finish">
-						</picture>
+						<?php
+							$spec_image = get_field('slide_image_1');
+							echo render_responsive_picture($spec_image, ' ');
+						?>
 					</article>
 
 					<article class="hero__slide hero__slide--two">
-						<picture>
-							<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-2.webp" media="(min-width: 1400px)">
-							<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-2-1440x960.webp" media="(min-width: 1200px)">
-							<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-2-1200x800.webp" media="(min-width: 992px)">
-							<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-2-1000x667.webp" media="(min-width: 768px)">
-							<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-2-780x520.webp" alt="Woman sitting in Dongfeng Box cabin where front seats are folded to create relaxation area">
-						</picture>
+						<?php
+							$spec_image = get_field('slide_image_2');
+							echo render_responsive_picture($spec_image, ' ');
+						?>
 					</article>
 
 					<article class="hero__slide hero__slide--three">
-						<picture>
-							<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort3.jpg" media="(min-width: 1400px)">
-							<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort3.jpg" media="(min-width: 1200px)">
-							<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort3-1200x694.jpg" media="(min-width: 992px)">
-							<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort3-1000x578.jpg" media="(min-width: 768px)">
-							<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort3-780x451.jpg" alt="Family enjoying ride in comfortable interior of Dongfeng Box electric car">
-						</picture>
+						<?php
+							$spec_image = get_field('slide_image_3');
+							echo render_responsive_picture($spec_image, ' ');
+						?>
 					</article>
 
 					<article class="hero__slide hero__slide--four">
-						<picture>
-							<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort2.jpg" media="(min-width: 1400px)">
-							<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort2.jpg" media="(min-width: 1200px)">
-							<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort2-1200x674.jpg" media="(min-width: 992px)">
-							<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort2-1000x562.jpg" media="(min-width: 768px)">
-							<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort2-780x438.jpg" alt="Mother and daughter spending cozy time in spacious Dongfeng Box trunk against city backdrop">
-						</picture>
+						<?php
+							$spec_image = get_field('slide_image_4');
+							echo render_responsive_picture($spec_image, ' ');
+						?>
 					</article>
 				</div>
 
@@ -358,6 +373,26 @@ get_header();
 		</div>
 	</section>
 
+	<div class="car-page__actions">
+		<div class="car-page__actions-item">
+			<button aria-label="Price list" class="car-page__actions-btn" data-action="price-list" data-file-url="<?php echo get_field('kainorastis'); ?>">
+				<img decoding="async" src="/wp-content/themes/dongfeng/assets/img/arrow-down.svg" alt="Kainoraštis">
+			</button>
+			<div class="car-page__actions-tooltip" role="tooltip">Kainoraštis</div>
+		</div>                            
+		<div class="car-page__actions-item">
+			<button aria-label="Test drive" class="car-page__actions-btn" data-action="test-drive">
+				<img decoding="async" src="/wp-content/themes/dongfeng/assets/img/car.svg" alt="Bandomasis važevimas">
+			</button>
+			<div class="car-page__actions-tooltip" role="tooltip">Bandomasis važevimas</div>
+		</div>                            
+		<div class="car-page__actions-item">
+			<button aria-label="Get an offer" class="car-page__actions-btn" data-action="get-offer">
+				<img decoding="async" src="/wp-content/themes/dongfeng/assets/img/file.svg" alt="Gauti pasiūlymą">
+			</button>
+			<div class="car-page__actions-tooltip" role="tooltip">Gauti pasiūlymą</div>
+		</div>                   
+	</div>
 
 </main>
 
