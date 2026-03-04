@@ -15,108 +15,162 @@ get_header();
 
 	<?php get_template_part( 'template-parts/hero', get_post_type() ); ?>
 
-	<section class="generic-intro">
-		<div class="container">
-			<h2 class="generic-intro__title">After-Sale Services</h2>
-			<p class="generic-intro__text">Our certified technicians are trained to the highest standards, ensuring your Dongfeng vehicle receives the care it deserves. From routine maintenance to complex repairs, we've got you covered.</p>
+	<?php if(get_field('pirmo_bloko_turinys')) { ?>
+	<section class="generic-intro container">
+		<hr>
+		<?php echo get_field('antraste_ir_aprasymas_detalizuotas'); ?>
+		<div class="generic-intro__inner">
+			<?php if(get_field('pirmo_bloko_turinys')){ ?>
+			<div class="generic-intro__line flex flex-row">
+				<div class="generic-intro__line-image">
+					<?php
+						$spec_image = get_field('pirmo_bloko_img');
+						echo render_responsive_picture($spec_image, ' ');
+					?>
+				</div>
+				<div class="generic-intro__line-content">
+					<?php echo get_field('pirmo_bloko_turinys'); ?>
+				</div>
+			</div>
+			<?php } ?>
+			<?php if(get_field('antro_bloko_turinys')){ ?>
+			<div class="generic-intro__line flex flex-row-reverse">
+				<div class="generic-intro__line-image">
+					<?php
+						$spec_image = get_field('antro_bloko_img');
+						echo render_responsive_picture($spec_image, ' ');
+					?>
+				</div>
+				<div class="generic-intro__line-content">
+					<?php echo get_field('antro_bloko_turinys'); ?>
+				</div>
+			</div>
+			<?php } ?>
+			<?php if(get_field('trecio_bloko_turinys')){ ?>
+			<div class="generic-intro__line flex flex-row">
+				<div class="generic-intro__line-image">
+					<?php
+						$spec_image = get_field('trecio_bloko_img');
+						echo render_responsive_picture($spec_image, ' ');
+					?>
+				</div>
+				<div class="generic-intro__line-content">
+					<?php echo get_field('trecio_bloko_turinys'); ?>
+				</div>
+			</div>
+			<?php } ?>
+			<?php if(get_field('ketvirto_bloko_turinys')){ ?>
+			<div class="generic-intro__line flex flex-row-reverse">
+				<div class="generic-intro__line-image">
+					<?php
+						$spec_image = get_field('ketvirto_bloko_img');
+						echo render_responsive_picture($spec_image, ' ');
+					?>
+				</div>
+				<div class="generic-intro__line-content">
+					<?php echo get_field('ketvirto_bloko_turinys'); ?>
+				</div>
+			</div>
+			<?php } ?>
 		</div>
+		<hr>
 	</section>
+	<?php } ?>
 
-
-	<section class="generic-cards">
-		<div class="generic-cards__grid container">
-			<article class="generic-card">
-				<div class="generic-card__image">
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/generic-maintenance.jpg" alt="Regular Maintenance">
-				</div>
-				<div class="generic-card__content">
-					<h3 class="generic-card__title">Regular Maintenance</h3>
-					<p class="generic-card__text">Keep your vehicle running smoothly with scheduled maintenance services including oil changes, filter replacements, brake inspections, and fluid checks.</p>
-				</div>
-			</article>
-
-			<article class="generic-card">
-				<div class="generic-card__content">
-					<h3 class="generic-card__title">Electrical Diagnostics</h3>
-					<p class="generic-card__text">Advanced diagnostic equipment to identify and resolve electrical issues, software updates, and electronic system calibrations.</p>
-				</div>
-				<div class="generic-card__image">
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/generic-diagnostics.jpg" alt="Electrical Diagnostics">
-				</div>
-			</article>
-
-			<article class="generic-card">
-				<div class="generic-card__image">
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/generic-bodywork.jpg" alt="Car Paint and Body Repairs">
-				</div>
-				<div class="generic-card__content">
-					<h3 class="generic-card__title">Car Paint and Body Repairs</h3>
-					<p class="generic-card__text">Professional body repairs and paint services to restore your vehicle to its original condition after accidents or wear.</p>
-				</div>
-			</article>
-
-			<article class="generic-card">
-				<div class="generic-card__content">
-					<h3 class="generic-card__title">Dongfeng Detailing</h3>
-					<p class="generic-card__text">Complete interior and exterior detailing services to keep your vehicle looking showroom-fresh, including ceramic coating and paint protection.</p>
-				</div>
-				<div class="generic-card__image">
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/generic-detailing.jpg" alt="Dongfeng Detailing">
-				</div>
-			</article>
-		</div>
-	</section>
-
-
+	<?php if(get_field('titulas_ir_aprasymas')) { ?>
 	<section class="generic-why">
 		<div class="container">
-			<h2 class="generic-why__title">Why Choose Our Service Center</h2>
+			<?php echo get_field('titulas_ir_aprasymas'); ?>
 			<div class="generic-why__grid">
 				<div class="generic-why__item">
+					<?php if(get_field('kortele_1_img')) { ?>
 					<div class="generic-why__icon">
-						<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-							<circle cx="12" cy="12" r="3"/>
-							<path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-						</svg>
+						<img src="<?php echo get_field('kortele_1_img')['url']; ?>" alt="<?php echo get_field('kortele_1_img')['title']; ?>" />
 					</div>
-					<h3 class="generic-why__item-title">Certified Technicians</h3>
-					<p class="generic-why__item-text">Factory-trained specialists with extensive knowledge of Dongfeng vehicles and systems.</p>
+					<?php } ?>
+					<?php if(get_field('kortele_1_turinys')) { echo get_field('kortele_1_turinys'); } ?>
 				</div>
 
 				<div class="generic-why__item">
+					<?php if(get_field('kortele_2_img')) { ?>
 					<div class="generic-why__icon">
-						<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-							<rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-							<line x1="8" y1="21" x2="16" y2="21"/>
-							<line x1="12" y1="17" x2="12" y2="21"/>
-						</svg>
+						<img src="<?php echo get_field('kortele_2_img')['url']; ?>" alt="<?php echo get_field('kortele_2_img')['title']; ?>" />
 					</div>
-					<h3 class="generic-why__item-title">Modern Equipment</h3>
-					<p class="generic-why__item-text">State-of-the-art diagnostic tools and equipment for precise analysis and repairs.</p>
+					<?php } ?>
+					<?php if(get_field('kortele_2_turinys')) { echo get_field('kortele_2_turinys'); } ?>
 				</div>
 
 				<div class="generic-why__item">
+					<?php if(get_field('kortele_3_img')) { ?>
 					<div class="generic-why__icon">
-						<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-							<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-							<circle cx="12" cy="7" r="4"/>
-						</svg>
+						<img src="<?php echo get_field('kortele_3_img')['url']; ?>" alt="<?php echo get_field('kortele_3_img')['title']; ?>" />
 					</div>
-					<h3 class="generic-why__item-title">Customer Focus</h3>
-					<p class="generic-why__item-text">Transparent communication, fair pricing, and commitment to your complete satisfaction.</p>
+					<?php } ?>
+					<?php if(get_field('kortele_3_turinys')) { echo get_field('kortele_3_turinys'); } ?>
 				</div>
 			</div>
 		</div>
 	</section>
+	<?php } ?>
 
-	<section class="generic-booking" id="booking">
-		<div class="container">
-			<h2 class="generic-booking__title">Rezervacija</h2>
-
-			<?php echo do_shortcode('[contact-form-7 id="8de8343" title="Rezervacija"]'); ?>
-
+	<?php if(get_field('korteles_1_turinys')) { ?>
+	<section class="generic-specifications centered container">
+		<hr>
+		<div class="generic-specifications__wrapper">
+			<div class="generic-specifications__line flex flex-row">
+				<div class="generic-specifications__line-image">
+					<picture>
+						<source srcset="<?php echo get_field('korteles_1_img')['sizes']['large']; ?>" media="(min-width: 1400px)">
+						<source srcset="<?php get_field('korteles_1_img')['sizes']['large']; ?>" media="(min-width: 1200px)">
+						<img decoding="async" src="<?php echo get_field('korteles_1_img')['sizes']['large']; ?>" alt="<?php echo get_field('korteles_1_img')['alt'] ?>">
+					</picture>
+				</div>
+				<div class="generic-specifications__line-content flex flex-column">
+					<?php echo get_field('korteles_1_turinys'); ?>
+				</div>
+			</div>
+			<div class="generic-specifications__line flex flex-row-reverse">
+				<div class="generic-specifications__line-image">
+					<picture>
+						<source srcset="<?php echo get_field('korteles_2_img')['sizes']['large']; ?>" media="(min-width: 1400px)">
+						<source srcset="<?php get_field('korteles_2_img')['sizes']['large']; ?>" media="(min-width: 1200px)">
+						<img decoding="async" src="<?php echo get_field('korteles_2_img')['sizes']['large']; ?>" alt="<?php echo get_field('korteles_2_img')['alt'] ?>">
+					</picture>
+				</div>
+				<div class="generic-specifications__line-content flex flex-column">
+					<?php echo get_field('korteles_2_turinys'); ?>
+				</div>
+			</div>
 		</div>
 	</section>
+	<?php } ?>
+
+	<?php if(get_field('papildomo_turinio_sekcija')) { ?>
+	<section class="generic-additional">
+		<div class="container">
+			<hr><br>
+			<?php echo get_field('papildomo_turinio_sekcija'); ?>
+			<div class="generic-additional__content flex">
+				<?php if(get_field('papildomo_turinio_paveikslelis')) { ?>
+					<img src="<?php echo get_field('papildomo_turinio_paveikslelis')['url']; ?>" alt="<?php echo get_field('papildomo_turinio_paveikslelis')['title']; ?>" />
+				<?php } ?>
+				<?php if(get_field('papildomo_turinio_turinys')) {  ?>
+					<div class="generic-additional__text flex flex-column">
+						<?php echo get_field('papildomo_turinio_turinys'); ?>
+					</div>
+				<?php } ?>
+			</div>
+		</div>
+	</section>
+	<?php } ?>
+
+	<?php if(get_field('formo_turinys')) { ?>
+	<section class="generic-booking" id="booking">
+		<div class="container">
+			<?php echo get_field('formo_turinys'); ?>
+		</div>
+	</section>
+	<?php } ?>
 
 </main>
 

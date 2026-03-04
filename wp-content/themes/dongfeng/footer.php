@@ -14,77 +14,86 @@
 ?>
 			<footer id="site-footer" class="site-footer">
 				<div class="site-footer__inner container">
-					<div class="site-footer__top">
-						<div class="site-footer__top-block centered">
-							<p class="site-footer__title">Adresas</p>
-							<p>Ukmergės g. 223</p>
-							<p>Vilnius</p>
+					<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
+						<div class="site-footer__top">
+							<?php dynamic_sidebar( 'sidebar-1' ); ?>
 						</div>
+					<?php endif; ?>
 
-						<div class="site-footer__top-block centered">
-							<p class="site-footer__title">Darbo laikas</p>
-							<p>Pir - Pen: 8:00 - 18:00</p>
-							<p>Šeš: 9:00 - 15:00</p>
-						</div>
-
-						<div class="site-footer__top-block centered">
-							<p class="site-footer__title">Kontaktai</p>
-							<p>+370 654 77888</p>
-							<p><a href="mailto:info@dongfeng.lt">info@dongfeng.lt</a></p>
-						</div>
-					</div>
-
-					<div class="site-footer__top">
-						<div class="site-footer__top-block">
-							<p class="site-footer__title">Modeliai</p>
-							<p><a href="">Box</a></p>
-							<p><a href="">Mage</a></p>
-							<p><a href="">Huge</a></p>
-							<p><a href="">Huge</a></p>
-							<p><a href="">T5 evo</a></p>
-						</div>
-
-						<div class="site-footer__top-block">
-							<br>
-							<p></p>
-							<p><a href="">T5 evo</a></p>
-							<p><a href="">T5 evo</a></p>
-							<p><a href="">T5 evo</a></p>
-							<p><a href="">T5 evo</a></p>
-							<p><a href="">T5 evo</a></p>
-						</div>
+					<div class="site-footer__top site-footer__top-second">
 
 						<div class="site-footer__top-block">
 							<p class="site-footer__title">Apie Mus</p>
-							<p><a href="">Box</a></p>
+							<?php
+							wp_nav_menu(
+								array(
+									'theme_location' => 'primary_4',
+									'container'      => false,
+									'menu_class'     => 'site-footer__menu'
+								)
+							);
+							?>
+							<br>
+							<p class="site-footer__title">Savininkams</p>
+							<?php
+							wp_nav_menu(
+								array(
+									'theme_location' => 'primary_3',
+									'container'      => false,
+									'menu_class'     => 'site-footer__menu'
+								)
+							);
+							?>
+						</div>
+
+						<div class="site-footer__top-block">
+							
+							<p class="site-footer__title">Servisas ir Garantija</p>
+							<?php
+							wp_nav_menu(
+								array(
+									'theme_location' => 'primary_2',
+									'container'      => false,
+									'menu_class'     => 'site-footer__menu'
+								)
+							);
+							?>
 							<br>
 							<p class="site-footer__title">Pasiūlymai</p>
-							<p><a href="">Box</a></p>
+							<?php
+							wp_nav_menu(
+								array(
+									'theme_location' => 'primary_5',
+									'container'      => false,
+									'menu_class'     => 'site-footer__menu'
+								)
+							);
+							?>
 						</div>
 
 						<div class="site-footer__top-block">
-							<p class="site-footer__title">Servisas ir Garantija</p>
-							<p><a href="">Box</a></p>
-							<p><a href="">Mage</a></p>
-							<p><a href="">Huge</a></p>
+							<p class="site-footer__title">Modeliai</p>
+							<?php
+							wp_nav_menu(
+								array(
+									'theme_location' => 'footer',
+									'container'      => false,
+									'menu_class'     => 'site-footer__menu site-footer__menu-models'
+								)
+							);
+							?>
 						</div>
-
-						<div class="site-footer__top-block">
-							<p class="site-footer__title">Savininkams</p>
-							<p><a href="">Box</a></p>
-							<p><a href="">Mage</a></p>
-						</div>
-
-						
 
 					</div>
 
 					<div class="site-footer__bottom">
-						<p>Dongfeng Lietuva© 2026</p>
+					<?php if ( is_active_sidebar( 'sidebar-2' ) ) : ?>
+						<?php dynamic_sidebar( 'sidebar-2' ); ?>
+					<?php endif; ?>
 						<div class="site-footer__social">
-							<a href="#" aria-label="Facebook">FB</a>
-							<a href="#" aria-label="Instagram">IG</a>
-							<a href="#" aria-label="Youtube">Yt</a>
+							<?php if ( is_active_sidebar( 'sidebar-3' ) ) : ?>
+								<?php dynamic_sidebar( 'sidebar-3' ); ?>
+							<?php endif; ?>
 						</div>
 					</div>
 				</div>

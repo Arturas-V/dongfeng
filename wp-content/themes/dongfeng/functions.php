@@ -120,11 +120,15 @@ add_action('wp_enqueue_scripts', function () {
 function dongfeng_menus() {
 
 	$locations = array(
-		'primary_1'   => __( 'Modeliai', 'dongfeng' ),
+		'primary_1'   => __( 'Modeliai Dongfeng', 'dongfeng' ),
+		'primary_1_2'   => __( 'Modeliai Forthing', 'forthing' ),
+		'primary_1_3'   => __( 'Modeliai Voyah', 'voyah' ),
+		'primary_1_4'   => __( 'Modeliai M-Hero', 'm-hero' ),
 		'primary_2'   => __( 'Servisas ir Garantija', 'dongfeng' ),
 		'primary_3'   => __( 'Savininkams', 'dongfeng' ),
 		'primary_4'   => __( 'Apie Mus', 'dongfeng' ),
 		'primary_5'   => __( 'Pasiūlymai', 'dongfeng' ),
+		'footer'      => __( 'Footer - Modeliai', 'dongfeng' ),
 	);
 
 	register_nav_menus( $locations );
@@ -200,9 +204,9 @@ function dongfeng_sidebar_registration() {
 		array_merge(
 			$shared_args,
 			array(
-				'name'        => __( 'Footer #1', 'dongfeng' ),
+				'name'        => __( 'Footer - Kontaktai', 'dongfeng' ),
 				'id'          => 'sidebar-1',
-				'description' => __( 'Widgets in this area will be displayed in the first column in the footer.', 'dongfeng' ),
+				'description' => __( 'Rodomas Footer sekcijoje Kontaktu skiltyje', 'dongfeng' ),
 			)
 		)
 	);
@@ -212,12 +216,80 @@ function dongfeng_sidebar_registration() {
 		array_merge(
 			$shared_args,
 			array(
-				'name'        => __( 'Footer #2', 'dongfeng' ),
+				'name'        => __( 'Footer - Žemesnis', 'dongfeng' ),
 				'id'          => 'sidebar-2',
-				'description' => __( 'Widgets in this area will be displayed in the second column in the footer.', 'dongfeng' ),
+				'description' => __( 'Rodomas pačioje apačioje.', 'dongfeng' ),
+			)
+		)
+	);
+
+	// Footer #3.
+	register_sidebar(
+		array_merge(
+			$shared_args,
+			array(
+				'name'        => __( 'Socialiu tinklu nuorodos', 'dongfeng' ),
+				'id'          => 'sidebar-3',
+				'description' => __( 'Rodomas viršuj virš pagrindnio meniu ir pačioje apačioje', 'dongfeng' ),
+			)
+		)
+	);
+
+	// Footer #4.
+	register_sidebar(
+		array_merge(
+			$shared_args,
+			array(
+				'name'        => __( 'Kontaktai virsuj', 'dongfeng' ),
+				'id'          => 'sidebar-4',
+				'description' => __( 'Rodomi pačiam viršuj virš menu juostos', 'dongfeng' ),
 			)
 		)
 	);
 }
 add_action( 'widgets_init', 'dongfeng_sidebar_registration' );
 
+
+// Add to functions.php
+function render_responsive_picture($image_field, $class = '', $sizes = []) {
+    if (!$image_field) return '';
+    
+    // Default sizes if none provided
+    $default_sizes = [
+        'desktop' => '2048x2048',
+        'laptop' => 'post-thumbnail',
+        'tablet' => 'large',
+        'mobile' => 'medium_large'
+    ];
+    
+    // Merge custom sizes with defaults
+    $sizes = array_merge($default_sizes, $sizes);
+    
+    // Get alt text
+    $alt = $image_field['alt'] ?: '';
+    
+    ob_start();
+    ?>
+    <picture class="<?php echo esc_attr($class); ?>">
+        <source 
+            srcset="<?php echo esc_url($image_field['sizes'][$sizes['desktop']]); ?>" 
+            media="(min-width: 1200px)"
+        >
+        <source 
+            srcset="<?php echo esc_url($image_field['sizes'][$sizes['laptop']]); ?>" 
+            media="(min-width: 1024px)"
+        >
+        <source 
+            srcset="<?php echo esc_url($image_field['sizes'][$sizes['tablet']]); ?>" 
+            media="(min-width: 768px)"
+        >
+        <img 
+            src="<?php echo esc_url($image_field['sizes'][$sizes['mobile']]); ?>" 
+            alt="<?php echo esc_attr($alt); ?>"
+            decoding="async"
+            loading="lazy"
+        >
+    </picture>
+    <?php
+    return ob_get_clean();
+}

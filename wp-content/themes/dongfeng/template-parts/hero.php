@@ -31,11 +31,10 @@ $image = get_field('hero_image');
     </picture>
     <?php endif; ?>
     <div class="generic-hero__content">
-        <h1 class="generic-hero__title"><?php echo get_field('hero_title') ?></h1>
-        <div class="generic-hero__text"><?php echo get_field('hero_text') ?></div>
+        <?php echo get_field('hero_title_and_title'); ?>
         <?php 
             $button = get_field('hero_button');
-            if($button) { ?><a href="<?php echo $button['url'] ?>" class="button button--light"><?php echo $button['title'] ?></a><?php }
+            if($button) { ?><button class="button button--light"><?php echo $button; ?></button><?php }
         ?>
         <div class="generic-hero__action">
             <button class="generic-hero__action-btn"></button>

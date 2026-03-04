@@ -899,3 +899,20 @@
     });
   });
 })();
+
+
+
+// Simple JavaScript to add class when scrolled
+document.addEventListener('DOMContentLoaded', function() {
+    const header = document.querySelector('.site-header');
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 0) { // Any scrolling
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+});
+
+

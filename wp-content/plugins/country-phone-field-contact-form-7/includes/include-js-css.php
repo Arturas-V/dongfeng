@@ -144,20 +144,20 @@ function nb_cpf_embedCssJs() {
 				var ip_address = "";
 
 				jQuery.ajax({
-					url: "https://ipapi.co/json/",
+					url: "https://ipinfo.io/json",
 					//url: "https://reallyfreegeoip.org/json/",
 					success: function(response){
 						
 						//console.log(response);
 						//var location = JSON.parse(response);
-						console.log(response.country_code);
-						if( response.country_code !== undefined){
+						console.log(response.country);
+						if( response.country !== undefined){
 							//console.log("here");
 							$(".wpcf7-countrytext").countrySelect({';
 							
 							$custom_inline_js .= isset( $nb_cpf_settings_options['country_auto_select'] ) 
 							&& $nb_cpf_settings_options['country_auto_select'] == 1 
-							? 'defaultCountry: response.country_code.toLowerCase(),' : '';
+							? 'defaultCountry: response.country.toLowerCase(),' : '';
 							
 							$custom_inline_js .= $onlyCountries.''.$preferredCountries.''.$excludeCountries.'
 							});
@@ -169,7 +169,7 @@ function nb_cpf_embedCssJs() {
 								hiddenInput: "full_number",';
 							$custom_inline_js .= isset( $nb_cpf_settings_options['phone_auto_select'] ) 
 							&& $nb_cpf_settings_options['phone_auto_select'] == 1 ?
-								'initialCountry: response.country_code.toLowerCase(),' : '';
+								'initialCountry: response.country.toLowerCase(),' : '';
 							$custom_inline_js .= $phone_onlyCountries.''.$phone_preferredCountries.''.$phone_excludeCountries.'	
 							});
 							
