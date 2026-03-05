@@ -32,10 +32,6 @@ $image = get_field('hero_image');
     <?php endif; ?>
     <div class="generic-hero__content">
         <?php echo get_field('hero_title_and_title'); ?>
-        <?php 
-            $button = get_field('hero_button');
-            if($button) { ?><button class="button button--light"><?php echo $button; ?></button><?php }
-        ?>
         <div class="generic-hero__action">
             <button class="generic-hero__action-btn"></button>
         </div>

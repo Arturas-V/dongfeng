@@ -33,7 +33,8 @@
   let isTransitioning = false;
 
   // Autoplay
-  const AUTOPLAY_DELAY = 5000; // 5 seconds before autoplay starts
+  const customDelay = slider.dataset.heroSliderDelay;
+  const AUTOPLAY_DELAY = customDelay ? parseInt(customDelay, 10) * 1000 : 5000; // Value in seconds, default 5
   const AUTOPLAY_INTERVAL = 5000; // 5 seconds between slides
   let autoplayTimer = null;
   let autoplayStartTimer = null;
@@ -905,7 +906,7 @@
 // Simple JavaScript to add class when scrolled
 document.addEventListener('DOMContentLoaded', function() {
     const header = document.querySelector('.site-header');
-    
+
     window.addEventListener('scroll', function() {
         if (window.scrollY > 0) { // Any scrolling
             header.classList.add('scrolled');
@@ -915,4 +916,139 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+/**
+ * Booking Popups
+ * Opens popups with forms when clicking trigger buttons
+ * Usage: Add data-popup="popup-name" to trigger buttons
+ *        Add data-popup-id="popup-name" to matching popup
+ */
+(() => {
+    const popups = document.querySelectorAll('.booking-popup');
+    const triggerBtns = document.querySelectorAll('[data-popup]');
 
+    if (popups.length === 0 || triggerBtns.length === 0) return;
+
+    const openPopup = (popupId) => {
+        const popup = document.querySelector(`.booking-popup[data-popup-id="${popupId}"]`);
+        if (popup) {
+            popup.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    const closePopup = (popup) => {
+        popup.classList.remove('is-open');
+        document.body.style.overflow = '';
+    };
+
+    const closeAllPopups = () => {
+        popups.forEach((popup) => {
+            popup.classList.remove('is-open');
+        });
+        document.body.style.overflow = '';
+    };
+
+    // Attach click handlers to trigger buttons
+    triggerBtns.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const popupId = btn.dataset.popup;
+            openPopup(popupId);
+        });
+    });
+
+    // Attach close handlers to each popup
+    popups.forEach((popup) => {
+        const closeBtn = popup.querySelector('.booking-popup__close');
+        const overlay = popup.querySelector('.booking-popup__overlay');
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => closePopup(popup));
+        }
+
+        if (overlay) {
+            overlay.addEventListener('click', () => closePopup(popup));
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeAllPopups();
+        }
+    });
+})();
+
+/**
+ * ACF Google Map
+ * Displays map with custom marker
+ */
+function initMap() {
+    const mapElements = document.querySelectorAll('.acf-map');
+
+    if (mapElements.length === 0) return;
+
+    const customMarkerIcon = '/wp-content/uploads/2026/03/market.png';
+
+    mapElements.forEach(mapElement => {
+        const markerElements = mapElement.querySelectorAll('.marker');
+        if (markerElements.length === 0) return;
+
+        // Get first marker position for initial center
+        const firstMarker = markerElements[0];
+        const initialLat = parseFloat(firstMarker.dataset.lat);
+        const initialLng = parseFloat(firstMarker.dataset.lng);
+
+        // Create map
+        const map = new google.maps.Map(mapElement, {
+            zoom: 13,
+            center: { lat: initialLat, lng: initialLng },
+            mapTypeControl: false,
+            streetViewControl: false
+        });
+
+        // Add markers
+        markerElements.forEach(markerElement => {
+            const lat = parseFloat(markerElement.dataset.lat);
+            const lng = parseFloat(markerElement.dataset.lng);
+            const position = { lat, lng };
+
+            const marker = new google.maps.Marker({
+                position,
+                map,
+                icon: {
+                    url: customMarkerIcon,
+                    scaledSize: new google.maps.Size(80, 110)
+                },
+                title: markerElement.querySelector('h3')?.textContent || ''
+            });
+
+            // Add info window if content exists
+            const infoContent = markerElement.querySelector('.info-window');
+            if (infoContent) {
+                const infoWindow = new google.maps.InfoWindow({
+                    content: infoContent.innerHTML
+                });
+
+                marker.addListener('click', () => {
+                    infoWindow.open(map, marker);
+                });
+            }
+
+            // Hide the marker div
+            markerElement.style.display = 'none';
+        });
+    });
+}
+
+// Load Google Maps API
+(function() {
+    const mapExists = document.querySelector('.acf-map');
+    if (!mapExists) return;
+
+    const script = document.createElement('script');
+    script.src = 'https://maps.googleapis.com/maps/api/js?key='+GoogleAPIkey+'&callback=initMap';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+})();

@@ -145,7 +145,7 @@ get_header();
 	</section>
 	<?php } ?>
 
-	<?php if(get_field('papildomo_turinio_sekcija')) { ?>
+	<?php if(get_field('papildomo_turinio_turinys')) { ?>
 	<section class="generic-additional">
 		<div class="container">
 			<hr><br>
@@ -171,6 +171,71 @@ get_header();
 		</div>
 	</section>
 	<?php } ?>
+
+	<?php if(get_field('zemelapio_vaizdavimas')) { 
+		$google_api_key = get_field('google_api_raktas');
+	?>
+
+	<section class="map-section flex flex-row">
+		<div class="map-section__content">
+			<?php echo get_field('zemelapio_turinys'); ?>
+		</div>
+		<div class="map-section__net">
+			<?php 
+			$location = get_field('zemelapio_vaizdavimas');
+			?>
+				<div class="acf-map" style="height: 400px; width: 100%;">
+					<div class="marker" 
+						data-lat="<?php echo esc_attr($location['lat']); ?>"
+						data-lng="<?php echo esc_attr($location['lng']); ?>"
+						data-icon="<?php echo esc_url(get_template_directory_uri() . '/wp-content/uploads/2026/03/market.png'); ?>">
+						
+						<div class="info-window">
+							<h3><?php the_title(); ?></h3>
+							<p><?php echo esc_html($location['address']); ?></p>
+							<?php if (get_field('phone')): ?>
+								<p>📞 <?php the_field('phone'); ?></p>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+			<?php ?>
+		</div>
+	</section>
+	<?php } ?>
+
+	<script>
+		const GoogleAPIkey = '<?php echo get_option('google_maps_api_key'); ?>';
+	</script>
+
+	<div class="booking-popup" data-popup-id="get-tech-appointment">
+		<div class="booking-popup__overlay"></div>
+		<div class="booking-popup__content">
+			<button class="booking-popup__close" aria-label="Close popup">×</button>
+			<div class="booking-popup__body">
+				
+				<div class="container">
+					<hr>
+					<?php if(get_field('issokanti_formapopup')) { echo get_field('issokanti_formapopup'); } ?>
+				</div>
+			</div>
+		</div>
+    </div>
+
+	<div class="booking-popup" data-popup-id="get-insurance-offer">
+		<div class="booking-popup__overlay"></div>
+		<div class="booking-popup__content">
+			<button class="booking-popup__close" aria-label="Close popup">×</button>
+			<div class="booking-popup__body">
+				
+				<div class="container">
+					<hr>
+					<?php if(get_field('issokanti_formapopup')) { echo get_field('issokanti_formapopup'); } ?>
+				</div>
+			</div>
+		</div>
+    </div>
+	
 
 </main>
 

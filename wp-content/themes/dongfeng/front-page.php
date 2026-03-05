@@ -12,97 +12,106 @@ get_header();
 
 <main id="site-content" class="homepage">
 	<section class="hero">
-		<div class="hero__slider" data-hero-slider>
+		<div class="hero__slider" data-hero-slider data-hero-slider-delay="43">
 			<div class="hero__track">
+
+				<?php
+				$video = get_field('pirmas_slide_img');
+				if($video) { 
+					?>
 				<article class="hero__slide hero__slide--one">
-					<picture class="hero__slide-image">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-1.webp" media="(min-width: 1400px)">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-1-1440x810.webp" media="(min-width: 1200px)">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-1-1200x675.webp" media="(min-width: 992px)">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-1-1000x563.webp" media="(min-width: 768px)">
-						<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-1-780x439.webp" alt="Smiling couple in modern Dongfeng Box cabin with light-colored panel finish">
-					</picture>
+					<div class="hero__slide-video">
+						<video src="<?php echo esc_url($video['url']); ?>" autoplay="" muted="" loop="" playsinline=""></video>
+					</div>
 					<div class="hero__overlay"></div>
 					<div class="hero__content">
-						<h1>Voyah Dream</h1>
-						<p class="hero__eyebrow">Special leasing and affordable performance. Your family in comfort and safety on every trip.</p>
-						<div class="hero__actions">
-							<a class="button button--light" href="#">Find out more</a>
-						</div>
+						<?php echo get_field('pirmas_slide_turinys'); ?>
 					</div>
 				</article>
+				<?php } ?>
 
+				<?php if(get_field('antras_slide_img')) { ?>
 				<article class="hero__slide hero__slide--two">
 					<picture class="hero__slide-image">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-2.webp" media="(min-width: 1400px)">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-2-1440x960.webp" media="(min-width: 1200px)">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-2-1200x800.webp" media="(min-width: 992px)">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-2-1000x667.webp" media="(min-width: 768px)">
-						<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/Dongfeng-BOX-EV-2-780x520.webp" alt="Woman sitting in Dongfeng Box cabin where front seats are folded to create relaxation area">
+						<source srcset="<?php echo get_field('antras_slide_img')['sizes']['2048x2048']; ?>" media="(min-width: 1400px)">
+						<source srcset="<?php echo get_field('antras_slide_img')['sizes']['1536x1536']; ?>" media="(min-width: 1200px)">
+						<source srcset="<?php echo get_field('antras_slide_img')['sizes']['large']; ?>" media="(min-width: 768px)">
+						<img decoding="async" src="<?php echo get_field('antras_slide_img')['sizes']['medium_large']; ?>" alt="<?php echo get_field('antras_slide_img')['alt'] ?>">
 					</picture>
 					<div class="hero__overlay"></div>
 					<div class="hero__content">
-						<h1>Voyah Free EV</h1>
-						<p class="hero__eyebrow">Electric range that keeps up with your workweek and weekend escape.</p>
-						<div class="hero__actions">
-							<a class="button button--light" href="#">Find out more</a>
-						</div>
+						<?php echo get_field('antras_slide_turinys'); ?>
 					</div>
 				</article>
+				<?php } ?>
 
+				<?php if(get_field('trecias_slide_img')) { ?>
 				<article class="hero__slide hero__slide--three">
 					<picture class="hero__slide-image">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort3.jpg" media="(min-width: 1400px)">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort3.jpg" media="(min-width: 1200px)">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort3-1200x694.jpg" media="(min-width: 992px)">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort3-1000x578.jpg" media="(min-width: 768px)">
-						<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort3-780x451.jpg" alt="Family enjoying ride in comfortable interior of Dongfeng Box electric car">
+						<source srcset="<?php echo get_field('trecias_slide_img')['sizes']['2048x2048']; ?>" media="(min-width: 1400px)">
+						<source srcset="<?php echo get_field('trecias_slide_img')['sizes']['1536x1536']; ?>" media="(min-width: 1200px)">
+						<source srcset="<?php echo get_field('trecias_slide_img')['sizes']['large']; ?>" media="(min-width: 768px)">
+						<img decoding="async" src="<?php echo get_field('trecias_slide_img')['sizes']['medium_large']; ?>" alt="<?php echo get_field('antras_slide_img')['alt'] ?>">
 					</picture>
 					<div class="hero__overlay"></div>
 					<div class="hero__content">
-						<h1>Voyah Passion</h1>
-						<p class="hero__eyebrow">Premium hybrid performance for confident long-distance travel.</p>
-						<div class="hero__actions">
-							<a class="button button--light" href="#">Find out more</a>
-						</div>
+						<?php echo get_field('trecias_slide_turinys'); ?>
 					</div>
 				</article>
+				<?php } ?>
 
+				<?php if(get_field('ketvirtas_slide_img')) { ?>
 				<article class="hero__slide hero__slide--four">
 					<picture class="hero__slide-image">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort2.jpg" media="(min-width: 1400px)">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort2.jpg" media="(min-width: 1200px)">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort2-1200x674.jpg" media="(min-width: 992px)">
-						<source srcset="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort2-1000x562.jpg" media="(min-width: 768px)">
-						<img decoding="async" src="https://dongfengwess.lv/wp-content/uploads/2024/11/DF-Box-Comfort2-780x438.jpg" alt="Mother and daughter spending cozy time in spacious Dongfeng Box trunk against city backdrop">
+						<source srcset="<?php echo get_field('ketvirtas_slide_img')['sizes']['2048x2048']; ?>" media="(min-width: 1400px)">
+						<source srcset="<?php echo get_field('ketvirtas_slide_img')['sizes']['1536x1536']; ?>" media="(min-width: 1200px)">
+						<source srcset="<?php echo get_field('ketvirtas_slide_img')['sizes']['large']; ?>" media="(min-width: 768px)">
+						<img decoding="async" src="<?php echo get_field('ketvirtas_slide_img')['sizes']['medium_large']; ?>" alt="<?php echo get_field('antras_slide_img')['alt'] ?>">
 					</picture>
 					<div class="hero__overlay"></div>
 					<div class="hero__content">
-						<h1>Dongfeng Mage</h1>
-						<p class="hero__eyebrow">City-focused agility with standout design and smart tech.</p>
-						<div class="hero__actions">
-							<a class="button button--light" href="#">Find out more</a>
-						</div>
+						<?php echo get_field('ketvirtas_slide_turinys'); ?>
 					</div>
 				</article>
+				<?php } ?>
+
+				<?php if(get_field('penktas_slide_img')) { ?>
+				<article class="hero__slide hero__slide--four">
+					<picture class="hero__slide-image">
+						<source srcset="<?php echo get_field('penktas_slide_img')['sizes']['2048x2048']; ?>" media="(min-width: 1400px)">
+						<source srcset="<?php echo get_field('penktas_slide_img')['sizes']['1536x1536']; ?>" media="(min-width: 1200px)">
+						<source srcset="<?php echo get_field('penktas_slide_img')['sizes']['large']; ?>" media="(min-width: 768px)">
+						<img decoding="async" src="<?php echo get_field('penktas_slide_img')['sizes']['medium_large']; ?>" alt="<?php echo get_field('antras_slide_img')['alt'] ?>">
+					</picture>
+					<div class="hero__overlay"></div>
+					<div class="hero__content">
+						<?php echo get_field('penktas_slide_turinys'); ?>
+					</div>
+				</article>
+				<?php } ?>
+
 			</div>
 
 			<div class="hero__meta">
 				<div class="hero__indicator" role="tablist">
+					<?php if(get_field('pirmas_slide_img')) { ?>
 					<button class="hero__dot is-active" type="button" aria-label="Slide 1" data-hero-dot="0"></button>
+					<?php } ?>
+					<?php if(get_field('antras_slide_img')) { ?>
 					<button class="hero__dot" type="button" aria-label="Slide 2" data-hero-dot="1"></button>
+					<?php } ?>
+					<?php if(get_field('trecias_slide_img')) { ?>
 					<button class="hero__dot" type="button" aria-label="Slide 3" data-hero-dot="2"></button>
+					<?php } ?>
+					<?php if(get_field('ketvirtas_slide_img')) { ?>
 					<button class="hero__dot" type="button" aria-label="Slide 4" data-hero-dot="3"></button>
+					<?php } ?>
+					<?php if(get_field('penktas_slide_img')) { ?>
+					<button class="hero__dot" type="button" aria-label="Slide 5" data-hero-dot="4"></button>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
-	</section>
-
-	<section class="tabs">
-		<button class="tabs__item is-active" type="button" data-tab="1">All cars</button>
-		<button class="tabs__item" type="button" data-tab="2">Electric cars</button>
-		<button class="tabs__item" type="button" data-tab="3">Hybrid cars</button>
-		<button class="tabs__item" type="button" data-tab="4">Petrol / Diesel</button>
 	</section>
 
 	<section class="car-showcase" data-showcase="1">
@@ -401,44 +410,76 @@ get_header();
 		<button class="car-showcase__arrow car-showcase__arrow--next" type="button" aria-label="Next" data-showcase-next>›</button>
 	</section>
 
-	<section class="split-section">
-		<div class="container split-section__wrap">
+	<?php if(get_field('about_content')) { ?>
+	<section class="split-section container">
+		<div class="container split-section__wrap flex flex-row">
 			<div class="split-section__media">
-				<div class="split-section__icon">◎</div>
+				<picture>
+					<source srcset="<?php echo get_field('about_image')['sizes']['large']; ?>" media="(min-width: 1400px)">
+					<source srcset="<?php get_field('about_image')['sizes']['large']; ?>" media="(min-width: 1200px)">
+					<img decoding="async" src="<?php echo get_field('about_image')['sizes']['large']; ?>" alt="<?php echo get_field('about_image')['alt'] ?>">
+				</picture>
 			</div>
-			<div class="split-section__content">
-				<h2>About Dongfeng Motor</h2>
-				<p>Dongfeng Motor is one of China’s leading manufacturers, delivering innovation, durability and sustainability in every model.</p>
-				<p>Our models are carefully curated to meet the daily and long-distance needs of Lithuanian drivers while offering premium comfort.</p>
+			<div class="split-section__content flex flex-column">
+				<?php echo get_field('about_content'); ?>
 			</div>
 		</div>
 	</section>
+	<?php } ?>
 
-	<section class="split-section split-section--reverse">
-		<div class="container split-section__wrap">
-			<div class="split-section__content">
-				<h2>About Wess Select</h2>
-				<p>As Wess Select we offer the best service, financing and ownership support for Dongfeng vehicles in the Baltics.</p>
-				<p>Our experts will guide you through model selection, warranties and care so that your ownership is effortless.</p>
+	<?php if(get_field('about_content_2')) { ?>
+	<section class="split-section container">
+		<div class="container split-section__wrap flex flex-row-reverse">
+			<div class="split-section__media">
+				<picture>
+					<source srcset="<?php echo get_field('about_image_2')['sizes']['large']; ?>" media="(min-width: 1400px)">
+					<source srcset="<?php get_field('about_image_2')['sizes']['large']; ?>" media="(min-width: 1200px)">
+					<img decoding="async" src="<?php echo get_field('about_image_2')['sizes']['large']; ?>" alt="<?php echo get_field('about_image_2')['alt'] ?>">
+				</picture>
 			</div>
-			<div class="split-section__media split-section__media--light"></div>
+			<div class="split-section__content flex flex-column">
+				<?php echo get_field('about_content_2'); ?>
+			</div>
 		</div>
 	</section>
+	<?php } ?>
 
-	<section class="info-map">
-		<div class="info-map__stats">
-			<div class="stat-card">
-				<h3 class="stat-card__title">30+ years of experience</h3>
-				<p>Wess Select has been the trusted partner of premium automotive brands for decades.</p>
-			</div>
+	<?php if(get_field('zemelapio_lokacija')) { 
+		$google_api_key = get_field('google_api_raktas');
+	?>
+
+	<section class="map-section flex flex-row">
+		<div class="map-section__content">
+			<?php echo get_field('zemelapio_turinys'); ?>
 		</div>
-		<div class="info-map__map">
-			<div class="info-map__map-pin">◎</div>
-			<div class="info-map__map-pin">◎</div>
-			<div class="info-map__map-pin">◎</div>
-			<p class="info-map__caption">Showrooms across Lithuania</p>
+		<div class="map-section__net">
+			<?php 
+			$location = get_field('zemelapio_lokacija');
+			?>
+				<div class="acf-map" style="height: 400px; width: 100%;">
+					<div class="marker" 
+						data-lat="<?php echo esc_attr($location['lat']); ?>"
+						data-lng="<?php echo esc_attr($location['lng']); ?>"
+						data-icon="<?php echo esc_url(get_template_directory_uri() . '/wp-content/uploads/2026/03/market.png'); ?>">
+						
+						<div class="info-window">
+							<h3><?php the_title(); ?></h3>
+							<p><?php echo esc_html($location['address']); ?></p>
+							<?php if (get_field('phone')): ?>
+								<p>📞 <?php the_field('phone'); ?></p>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+			<?php ?>
 		</div>
 	</section>
+	<?php } ?>
+
+	<script>
+		const GoogleAPIkey = '<?php echo get_option('google_maps_api_key'); ?>';
+	</script>
+
 </main>
 
 <?php

@@ -50,7 +50,7 @@ get_header();
 	</section>
 
 	<section class="flex flex-center car-features">
-		<button type="button"  class="button button--dark car-test-drive-book"><?php echo get_field('button_text'); ?></button>
+		<button type="button" data-popup="test-drive" class="button button--dark"><?php echo get_field('button_text'); ?></button>
 
 		<div class="car-features__wrap flex">
 			<div class="car-features__wrap-item">
@@ -77,7 +77,7 @@ get_header();
 	<?php get_template_part( 'template-parts/car-color-gallery', get_post_type() ); ?>
 
 	<section class="car-intro container">
-		<button type="button"  class="button button--dark car-test-drive-book"><?php echo get_field('button_text'); ?></button>
+		<button type="button" data-popup="test-drive" class="button button--dark"><?php echo get_field('button_text'); ?></button>
 		<hr>
 		<div class="car-intro__inner">
 			<div class="car-intro__line flex flex-row">
@@ -210,7 +210,7 @@ get_header();
 	</section>
 
 	<section class="car-specifications centered container">
-		<button type="button"  class="button button--dark car-test-drive-book"><?php echo get_field('button_text'); ?></button>
+		<button type="button" data-popup="test-drive" class="button button--dark"><?php echo get_field('button_text'); ?></button>
 		<hr>
 		<div class="car-specifications__wrapper">
 			<div class="car-specifications__line flex flex-row">
@@ -357,6 +357,36 @@ get_header();
 	</section>
 	<?php } ?>
 
+	<div class="booking-popup" data-popup-id="test-drive">
+		<div class="booking-popup__overlay"></div>
+		<div class="booking-popup__content">
+			<button class="booking-popup__close" aria-label="Close popup">×</button>
+			<div class="booking-popup__body">
+				
+				<div class="container">
+					<hr>
+					<h2><?php echo get_field('button_text'); ?></h2>
+					<?php echo do_shortcode('[contact-form-7 id="f63b726" title="Užsiregistruoti bandomajam važiavimui"]'); ?>
+				</div>
+			</div>
+		</div>
+    </div>
+
+	<div class="booking-popup" data-popup-id="get-offer">
+		<div class="booking-popup__overlay"></div>
+		<div class="booking-popup__content">
+			<button class="booking-popup__close" aria-label="Close popup">×</button>
+			<div class="booking-popup__body">
+				
+				<div class="container">
+					<hr>
+					<h2>Prašyti pasiūlymo</h2>
+					<?php echo do_shortcode('[contact-form-7 id="10e1f0b" title="Prašyti pasiūlymo"]'); ?>
+				</div>
+			</div>
+		</div>
+    </div>
+
 	<div class="car-page__actions">
 		<div class="car-page__actions-item">
 			<button aria-label="Price list" class="car-page__actions-btn" data-action="price-list" data-file-url="<?php echo get_field('kainorastis'); ?>">
@@ -365,13 +395,13 @@ get_header();
 			<div class="car-page__actions-tooltip" role="tooltip">Kainoraštis</div>
 		</div>                            
 		<div class="car-page__actions-item">
-			<button aria-label="Test drive" class="car-page__actions-btn" data-action="test-drive">
+			<button aria-label="Test drive" class="car-page__actions-btn" data-popup="test-drive">
 				<img decoding="async" src="/wp-content/themes/dongfeng/assets/img/car.svg" alt="Bandomasis važevimas">
 			</button>
 			<div class="car-page__actions-tooltip" role="tooltip">Bandomasis važevimas</div>
 		</div>                            
 		<div class="car-page__actions-item">
-			<button aria-label="Get an offer" class="car-page__actions-btn" data-action="get-offer">
+			<button aria-label="Get an offer" class="car-page__actions-btn" data-popup="get-offer">
 				<img decoding="async" src="/wp-content/themes/dongfeng/assets/img/file.svg" alt="Gauti pasiūlymą">
 			</button>
 			<div class="car-page__actions-tooltip" role="tooltip">Gauti pasiūlymą</div>

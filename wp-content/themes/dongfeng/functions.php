@@ -293,3 +293,58 @@ function render_responsive_picture($image_field, $class = '', $sizes = []) {
     <?php
     return ob_get_clean();
 }
+
+function my_acf_google_map_api($api) {
+    $api['key'] = get_option('google_maps_api_key');
+    return $api;
+}
+add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
+
+
+
+// 1. Add the admin menu item
+add_action('admin_menu', 'add_google_maps_api_menu');
+function add_google_maps_api_menu() {
+    add_options_page(
+        'Google Maps API Settings',
+        'Google Maps API',
+        'manage_options',
+        'google-maps-api',
+        'render_google_maps_api_page'
+    );
+}
+
+// 2. Render the settings page
+function render_google_maps_api_page() {
+    ?>
+    <div class="wrap">
+        <h1>Google Maps API Settings</h1>
+        <form method="post" action="options.php">
+            <?php
+            settings_fields('google_maps_api_options_group');
+            do_settings_sections('google-maps-api');
+            ?>
+            <table class="form-table">
+                <tr>
+                    <th scope="row">Google Maps API Key</th>
+                    <td>
+                        <input type="text" 
+                               name="google_maps_api_key" 
+                               value="<?php echo esc_attr(get_option('google_maps_api_key')); ?>" 
+                               class="regular-text"
+                               placeholder="Enter your API key here">
+                        <p class="description">Paste your Google Maps API key here.</p>
+                    </td>
+                </tr>
+            </table>
+            <?php submit_button(); ?>
+        </form>
+    </div>
+    <?php
+}
+
+// 3. Register the setting
+add_action('admin_init', 'register_google_maps_api_setting');
+function register_google_maps_api_setting() {
+    register_setting('google_maps_api_options_group', 'google_maps_api_key');
+}
