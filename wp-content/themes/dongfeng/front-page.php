@@ -389,7 +389,7 @@ get_header('', ['main_data' => $main_fields]);
 				<div class="container">
 					<hr>
 					<h2>Užsiregistruoti bandomajam važiavimui</h2>
-					<?php echo do_shortcode('[contact-form-7 id="f63b726" title="Užsiregistruoti bandomajam važiavimui"]'); ?>
+					<?php echo do_shortcode('[contact-form-7 id="473d69b" title="Registruotis bandomajam važiavimui"]'); ?>
 				</div>
 			</div>
 		</div>

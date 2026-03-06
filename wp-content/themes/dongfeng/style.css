@@ -85,6 +85,24 @@ strong {
 	font-weight: 600;
 }
 
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    /* Also kill the default dropdown arrow */
+    background-image: none;
+    
+    /* Add your own custom arrow */
+    /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px; */
+    
+    /* Add padding to prevent text from going under arrow */
+    /* padding-right: 30px; */
+}
+
 /* -------------------------------------------------------------------------- */
 
 /*	1. Document Setup
@@ -915,6 +933,24 @@ a {
 }
 
 @media (max-width: 1000px) {
+
+	.car-showcase {
+		padding: 2rem 0 2rem;
+	}
+	.car-showcase__desc p {
+		font-size: 1.8rem;
+    	line-height: 2.6rem;
+	}
+
+	.car-showcase__desc img {
+		max-width: 220px;
+    	height: auto;
+	}
+
+	.car-showcase__viewport {
+		padding-top: 0;
+	} 
+
 	.car-showcase__1-cards .car-card {
 		width: 100%;
 	}
@@ -1318,6 +1354,11 @@ a {
 		width: 130px;
 	}
 
+	.sub-menu a:hover {
+		background: none;
+		color: #363636;
+	}
+
 	.split-section__wrap {
 		padding-left: 2rem;
 		padding-right: 2rem;
@@ -1568,16 +1609,6 @@ a {
 }
 
 @media (min-width: 1000px) {
-	.car-showcase {
-		padding: 2rem 0 2rem;
-	}
-	.car-showcase__viewport {
-		padding-top: 0;
-	}
-	.car-showcase__desc p {
-		font-size: 1.8rem;
-    	line-height: 2.6rem;
-	}
 	.desktop-hide {
 		display: none;
 	}
@@ -3015,7 +3046,15 @@ a {
 		text-align: center;
 	}
 	.hero__content {
-		margin-bottom: 16rem;
+		margin-bottom: 25rem;
+	}
+	.hero__content a {
+		font-size: 1rem;
+		font-weight: 600;
+		padding: 1.5rem 3rem;
+	}
+	.hero__indicator {
+		display: none;
 	}
 	.hero h1 {
 		line-height: 4rem;

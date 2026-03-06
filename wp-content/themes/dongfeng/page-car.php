@@ -366,7 +366,7 @@ get_header();
 				<div class="container">
 					<hr>
 					<h2><?php echo get_field('button_text'); ?></h2>
-					<?php echo do_shortcode('[contact-form-7 id="f63b726" title="Užsiregistruoti bandomajam važiavimui"]'); ?>
+					<?php echo do_shortcode('[contact-form-7 id="473d69b" title="Registruotis bandomajam važiavimui"]'); ?>
 				</div>
 			</div>
 		</div>
