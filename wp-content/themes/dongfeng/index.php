@@ -14,7 +14,9 @@
  * @since Dongfeng Lietuva 1.0
  */
 
-get_header();
+$main_fields = get_field_objects(10);
+
+get_header('', ['main_data' => $main_fields]);
 ?>
 
 <main id="site-content">

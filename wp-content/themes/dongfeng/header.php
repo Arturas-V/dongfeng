@@ -9,9 +9,13 @@
  * @since Dongfeng Lietuva 1.0
  */
 
-$main_data = $args['main_data'] ?? [];
+$main_fields = $args['main_data'] ?? [];
 
-// var_dump();
+$icons = [
+	'Elektromobilis' => ['electric.png', 'EV'],
+	'Hibridas' => ['hybrid.png', 'HEV'],
+	'Beznininis/dyzelinis' => ['petrol.png', 'ICE']
+];
 
 ?><!DOCTYPE html>
 
@@ -83,13 +87,65 @@ $main_data = $args['main_data'] ?? [];
 								<ul class="swiper-wrapper" id="swiper-wrapper-1944de2b3b1d6c43" aria-live="polite" >
 
 									<li class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 3">
-										<a href="/dongfeng-box/" style=""><div class="model"><div><div class="fuel-types"><img src="/wp-content/uploads/2026/03/fuel-type/electric.png" alt="electric"></div><div class="labels"><span class="red">OFFER!</span></div></div><div class="car"><div><img src="/wp-content/uploads/2026/03/box-menu-240x135-1.png" alt="Dongfeng Box"></div><span class="title">Box</span><span class="sub-title">from 21 980 €</span></div></div></a>
+										<a href="<?php echo $main_fields['box_nuoroda']['value']['url']; ?>" style="">
+											<div class="model">
+												<div>
+													<div class="fuel-types">
+														<?php foreach ((array)$main_fields['box_tipas']['value'] as $type) { 
+															if ($icon = $icons[trim($type)] ?? null) {
+																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
+														} } ?>
+													</div>
+													<?php if($main_fields['box_etikete']['value']) { ?><div class="labels"><span class="<?php if($main_fields['box_etikete']['value'][0] == 'Akcija') { echo 'red'; } ?>"><?php echo $main_fields['box_etikete']['value'][0]; ?></span></div><?php } ?>
+												</div>
+												
+												<div class="car">
+													<img decoding="async" src="<?php echo $main_fields['box_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['box_img']['value']['alt'] ?>">
+													<span class="title"><?php echo $main_fields['box_nuoroda']['value']['title']; ?></span>
+													<span class="sub-title"><?php echo $main_fields['box_kaina']['value']; ?></span>
+												</div>
+											</div>
+										</a>
 									</li>
 									<li class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 3">
-										<a href="/dongfeng-mage"><div class="model"><div><div class="fuel-types"><img src="/wp-content/uploads/2026/03/petrol.png" alt="ice"><img src="/wp-content/uploads/2026/03/hybrid.png" alt="hybrid"></div><div class="labels"><span class="grey">Debut!</span></div></div><div class="car"><div><img src="/wp-content/uploads/2026/03/mage_green-240x135-1.png" alt="Dongfeng Mage"></div><span class="title">Mage</span><span class="sub-title">from 24 990  €</span></div></div></a>
+										<a href="<?php echo $main_fields['mage_nuoroda']['value']['url']; ?>">
+											<div class="model">
+												<div>
+													<div class="fuel-types">
+														<?php foreach ((array)$main_fields['mage_tipas']['value'] as $type) { 
+															if ($icon = $icons[trim($type)] ?? null) {
+																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
+														} } ?>
+													</div>
+													<?php if($main_fields['mage_etikete']['value']) { ?><div class="labels"><span class="<?php if($main_fields['mage_etikete']['value'][0] == 'Akcija') { echo 'red'; } ?>"><?php echo $main_fields['mage_etikete']['value'][0]; ?></span></div><?php } ?>
+												</div>
+												<div class="car">
+													<img decoding="async" src="<?php echo $main_fields['mage_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['mage_img']['value']['alt'] ?>">
+													<span class="title"><?php echo $main_fields['mage_nuoroda']['value']['title']; ?></span>
+													<span class="sub-title"><?php echo $main_fields['mage_kaina']['value']; ?></span>
+												</div>
+											</div>
+										</a>
 									</li>
 									<li class="swiper-slide" role="group" aria-label="3 / 3">
-										<a href="/dongfeng-huge"><div class="model"><div><div class="fuel-types"><img src="/wp-content/uploads/2026/03/petrol.png" alt="ice"><img src="/wp-content/uploads/2026/03/hybrid.png" alt="hybrid"></div><div class="labels"><span class="grey">Debut!</span></div></div><div class="car"><div><img src="/wp-content/uploads/2026/03/huge-trang-den-1-240x139-1.png" alt="Dongfeng Huge"></div><span class="title">Huge</span><span class="sub-title">from 29 990 €</span></div></div></a>
+										<a href="<?php echo $main_fields['huge_nuoroda']['value']['url']; ?>">
+											<div class="model">
+												<div>
+													<div class="fuel-types">
+														<?php foreach ((array)$main_fields['huge_tipas']['value'] as $type) { 
+															if ($icon = $icons[trim($type)] ?? null) {
+																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
+														} } ?>
+													</div>
+													<?php if($main_fields['huge_etikete']['value']) { ?><div class="labels"><span class="<?php if($main_fields['huge_etikete']['value'][0] == 'Akcija') { echo 'red'; } ?>"><?php echo $main_fields['huge_etikete']['value'][0]; ?></span></div><?php } ?>
+												</div>
+												<div class="car">
+													<img decoding="async" src="<?php echo $main_fields['huge_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['huge_img']['value']['alt'] ?>">
+													<span class="title"><?php echo $main_fields['huge_nuoroda']['value']['title']; ?></span>
+													<span class="sub-title"><?php echo $main_fields['huge_kaina']['value']; ?></span>
+												</div>
+											</div>
+										</a>
 									</li>
 
 								</ul>
@@ -100,16 +156,80 @@ $main_data = $args['main_data'] ?? [];
 							<div class="swiper swiper-menu-item-1 swiper-initialized swiper-horizontal swiper-pointer-events">
 								<ul class="swiper-wrapper" id="swiper-wrapper-10657f7108acc176e5" aria-live="polite" >
 									<li class="swiper-slide swiper-slide-active"  role="group" aria-label="1 / 4">
-										<a href="/forthing-t5-evo"><div class="model"><div><div class="fuel-types"><img src="/wp-content/uploads/2026/03/petrol.png" alt="ice"><img src="/wp-content/uploads/2026/03/hybrid.png" alt="hybrid"></div></div><div class="car"><div><img src="/wp-content/uploads/2026/03/t5evo-menu-240x135-1.png" alt="Forthing T5 EVO"></div><span class="title">T5 Evo</span><span class="sub-title">from 27 490 €</span></div></div></a>
+										<a href="<?php echo $main_fields['t5_evo_nuoroda']['value']['url']; ?>">
+											<div class="model">
+												<div>
+													<div class="fuel-types">
+														<?php foreach ((array)$main_fields['t5_evo_tipas']['value'] as $type) { 
+															if ($icon = $icons[trim($type)] ?? null) {
+																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
+														} } ?>
+													</div>
+												</div>
+												<div class="car">
+													<img decoding="async" src="<?php echo $main_fields['t5_evo_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['t5_evo_img']['value']['alt'] ?>">
+													<span class="title"><?php echo $main_fields['t5_evo_nuoroda']['value']['title']; ?></span>
+													<span class="sub-title"><?php echo $main_fields['t5_evo_kaina']['value']; ?></span>
+												</div>
+											</div>
+										</a>
 									</li>
 									<li class="swiper-slide swiper-slide-next"  role="group" aria-label="2 / 4">
-										<a href="/forthing-u-tour"><div class="model"><div><div class="fuel-types"><img src="/wp-content/uploads/2026/03/petrol.png" alt="ice"><img src="/wp-content/uploads/2026/03/hybrid.png" alt="hybrid"></div></div><div class="car"><div><img src="/wp-content/uploads/2026/03/utour-menu-240x135-1.png" alt="Forthin U-TOUR"></div><span class="title">U-TOUR (M4)</span><span class="sub-title">from 33 990 €</span></div></div></a>
+										<a href="<?php echo $main_fields['u_tour_nuoroda']['value']['url']; ?>">
+											<div class="model">
+												<div>
+													<div class="fuel-types">
+														<?php foreach ((array)$main_fields['u_tour_tipas']['value'] as $type) { 
+															if ($icon = $icons[trim($type)] ?? null) {
+																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
+														} } ?>
+													</div>
+												</div>
+												<div class="car">
+													<img decoding="async" src="<?php echo $main_fields['u_tour_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['u_tour_img']['value']['alt'] ?>">
+													<span class="title"><?php echo $main_fields['u_tour_nuoroda']['value']['title']; ?></span
+													><span class="sub-title"><?php echo $main_fields['u_tour_kaina']['value']; ?></span>
+												</div>
+											</div>
+										</a>
 									</li>
 									<li class="swiper-slide"  role="group" aria-label="3 / 4">
-										<a href="/forthing-v9"><div class="model"><div><div class="fuel-types"><img src="/wp-content/uploads/2026/03/hybrid.png" alt="hybrid"></div></div><div class="car"><div><img src="/wp-content/uploads/2026/03/V9-240x135-1.png" alt=""></div><span class="title">Forthing V9</span><span class="sub-title">49 990 €</span></div></div></a>
+										<a href="<?php echo $main_fields['forthing_v9_nuoroda']['value']['url']; ?>">
+											<div class="model">
+												<div>
+													<div class="fuel-types">
+														<?php foreach ((array)$main_fields['forthing_v9_tipas']['value'] as $type) { 
+															if ($icon = $icons[trim($type)] ?? null) {
+																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
+														} } ?>
+													</div>
+												</div>
+												<div class="car">
+													<img decoding="async" src="<?php echo $main_fields['forthing_v9_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['forthing_v9_img']['value']['alt'] ?>">
+													<span class="title"><?php echo $main_fields['forthing_v9_nuoroda']['value']['title']; ?></span>
+													<span class="sub-title"><?php echo $main_fields['forthing_v9_kaina']['value']; ?></span>
+												</div>
+											</div>
+										</a>
 									</li>
 									<li class="swiper-slide"  role="group" aria-label="4 / 4">
-										<a href="/forthing-s7"><div class="model"><div><div class="fuel-types"><img src="/wp-content/uploads/2026/03/electric.png" alt="electric"></div></div><div class="car"><div><img src="/wp-content/uploads/2026/03/s7-240x135-1.png" alt=""></div><span class="title">Forthing S7</span><span class="sub-title">from 39 990 €</span></div></div></a>
+										<a href="<?php echo $main_fields['forthing_s7_nuoroda']['value']['url']; ?>">
+											<div class="model">
+												<div>
+													<div class="fuel-types">
+														<?php foreach ((array)$main_fields['forthing_s7_tipas']['value'] as $type) { 
+															if ($icon = $icons[trim($type)] ?? null) {
+																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
+														} } ?>
+													</div>
+												</div>
+												<div class="car">
+													<img decoding="async" src="<?php echo $main_fields['forthing_s7_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['forthing_s7_img']['value']['alt'] ?>">
+													<span class="title"><?php echo $main_fields['forthing_s7_nuoroda']['value']['title']; ?></span>
+													<span class="sub-title"><?php echo $main_fields['forthing_s7_kaina']['value']; ?></span>
+												</div>
+											</div>
+										</a>
 									</li>
 								</ul>
 							<div class="swiper-button-prev swiper-button-prev-1 swiper-button-disabled swiper-button-lock" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-10657f7108acc176e5" aria-disabled="true"></div><div class="swiper-button-next swiper-button-next-1 swiper-button-disabled swiper-button-lock" tabindex="-1" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-10657f7108acc176e5" aria-disabled="true"></div></span></span></span></span></span></span></div>
@@ -118,10 +238,42 @@ $main_data = $args['main_data'] ?? [];
 							<div class="swiper swiper-menu-item-2 swiper-initialized swiper-horizontal swiper-pointer-events">
 								<ul class="swiper-wrapper" id="swiper-wrapper-48e610cc106c5e638d" aria-live="polite" >
 									<li class="swiper-slide swiper-slide-active"  role="group" aria-label="1 / 2">
-										<a href="/voyah-dream"><div class="model"><div><div class="fuel-types"><img src="/wp-content/uploads/2026/03/electric.png" alt="electric"></div></div><div class="car"><div><img src="/wp-content/uploads/2026/03/dream-menu-240x135-1.png" alt="Voyah Dream"></div><span class="title">Voyah Dream</span><span class="sub-title">from 96 990 €</span></div></div></a>
+										<a href="<?php echo $main_fields['voyah_dream_nuoroda']['value']['url']; ?>">
+											<div class="model">
+												<div>
+													<div class="fuel-types">
+														<?php foreach ((array)$main_fields['voyah_dream_tipas']['value'] as $type) { 
+															if ($icon = $icons[trim($type)] ?? null) {
+																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
+														} } ?>
+													</div>
+												</div>
+												<div class="car">
+													<img decoding="async" src="<?php echo $main_fields['voyah_dream_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['voyah_dream_img']['value']['alt'] ?>">
+													<span class="title"><?php echo $main_fields['voyah_dream_nuoroda']['value']['title']; ?></span>
+													<span class="sub-title"><?php echo $main_fields['voyah_dream_kaina']['value']; ?></span>
+												</div>
+											</div>
+										</a>
 									</li>
 									<li class="swiper-slide swiper-slide-next"  role="group" aria-label="2 / 2">
-										<a href="/voyah-courage"><div class="model"><div><div class="fuel-types"><img src="/wp-content/uploads/2026/03/electric.png" alt="electric"></div></div><div class="car"><div><img src="/wp-content/uploads/2026/03/courage-menu-240x135-1.png" alt="Voyah Courage"></div><span class="title">Voyah Courage</span><span class="sub-title">from 46 990 €</span></div></div></a>
+										<a href="<?php echo $main_fields['voyah_courage_nuoroda']['value']['url']; ?>">
+											<div class="model">
+												<div>
+													<div class="fuel-types">
+														<?php foreach ((array)$main_fields['voyah_courage_tipas']['value'] as $type) { 
+															if ($icon = $icons[trim($type)] ?? null) {
+																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
+														} } ?>
+													</div>
+												</div>
+												<div class="car">
+													<img decoding="async" src="<?php echo $main_fields['voyah_courage_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['voyah_courage_img']['value']['alt'] ?>">
+													<span class="title"><?php echo $main_fields['voyah_courage_nuoroda']['value']['title']; ?></span>
+													<span class="sub-title"><?php echo $main_fields['voyah_courage_kaina']['value']; ?></span>
+												</div>
+											</div>
+										</a>
 									</li>
 								</ul>
 							<div class="swiper-button-prev swiper-button-prev-2 swiper-button-disabled swiper-button-lock" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-48e610cc106c5e638d" aria-disabled="true"></div><div class="swiper-button-next swiper-button-next-2 swiper-button-disabled swiper-button-lock" tabindex="-1" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-48e610cc106c5e638d" aria-disabled="true"></div></span></span></span></span></span></span></div>
@@ -130,7 +282,23 @@ $main_data = $args['main_data'] ?? [];
 							<div class="swiper swiper-menu-item-3 swiper-initialized swiper-horizontal swiper-pointer-events">
 								<ul class="swiper-wrapper" id="swiper-wrapper-b8435210934510d25f" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
 									<li class="swiper-slide swiper-slide-active"  role="group" aria-label="1 / 1">
-										<a href="/mhero"><div class="model"><div><div class="fuel-types"><img src="/wp-content/uploads/2026/03/electric.png" alt="electric"></div></div><div class="car"><div><img src="/wp-content/uploads/2026/03/mhero-menu-1-240x135-1.png" alt="M-Hero"></div><span class="title">MHERO</span><span class="sub-title">169 990 €</span></div></div></a>
+										<a href="<?php echo $main_fields['mhero_nuoroda']['value']['url']; ?>">
+											<div class="model">
+												<div>
+													<div class="fuel-types">
+														<?php foreach ((array)$main_fields['mhero_tipas']['value'] as $type) { 
+															if ($icon = $icons[trim($type)] ?? null) {
+																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
+														} } ?>
+													</div>
+												</div>
+												<div class="car">
+													<img decoding="async" src="<?php echo $main_fields['mhero_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['mhero_img']['value']['alt'] ?>">
+													<span class="title"><?php echo $main_fields['mhero_nuoroda']['value']['title']; ?></span>
+													<span class="sub-title"><?php echo $main_fields['mhero_kaina']['value']; ?></span>
+												</div>
+											</div>
+										</a>
 									</li>
 								</ul>
 							<div class="swiper-button-prev swiper-button-prev-3 swiper-button-disabled swiper-button-lock" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-b8435210934510d25f" aria-disabled="true"></div><div class="swiper-button-next swiper-button-next-3 swiper-button-disabled swiper-button-lock" tabindex="-1" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-b8435210934510d25f" aria-disabled="true"></div></span></span></span></span></span></span></div>

@@ -26,7 +26,9 @@ get_header('', ['main_data' => $main_fields]);
 				<article class="hero__slide hero__slide--one">
 					<div class="hero__slide-video">
 						<video autoplay="" muted="" loop="" playsinline="">
+							<?php if($video_mob['url']) { ?>
 							<source src="<?php echo esc_url($video_mob['url']); ?>" media="(max-width: 767px)">
+							<?php } ?>
 							<source src="<?php echo esc_url($video['url']); ?>" media="(min-width: 768px)">
 						</video>
 					</div>
@@ -43,7 +45,9 @@ get_header('', ['main_data' => $main_fields]);
 						<source srcset="<?php echo $main_fields['antras_slide_img']['value']['sizes']['2048x2048']; ?>" media="(min-width: 1400px)">
 						<source srcset="<?php echo $main_fields['antras_slide_img']['value']['sizes']['1536x1536']; ?>" media="(min-width: 1200px)">
 						<source srcset="<?php echo $main_fields['antras_slide_img']['value']['sizes']['large']; ?>" media="(min-width: 768px)">
+						<?php if($main_fields['antras_slide_img_mobiliam']['value']) { ?>
 						<source srcset="<?php echo $main_fields['antras_slide_img_mobiliam']['value']['sizes']['2048x2048']; ?>" media="(max-width: 767px) and (orientation: portrait)">
+						<?php } ?>
 						<img decoding="async" src="<?php echo $main_fields['antras_slide_img']['value']['sizes']['2048x2048']; ?>" alt="<?php echo $main_fields['antras_slide_img']['value']['alt'] ?>">
 					</picture>
 					<div class="hero__overlay"></div>
@@ -59,7 +63,9 @@ get_header('', ['main_data' => $main_fields]);
 						<source srcset="<?php echo $main_fields['trecias_slide_img']['value']['sizes']['2048x2048']; ?>" media="(min-width: 1400px)">
 						<source srcset="<?php echo $main_fields['trecias_slide_img']['value']['sizes']['1536x1536']; ?>" media="(min-width: 1200px)">
 						<source srcset="<?php echo $main_fields['trecias_slide_img']['value']['sizes']['large']; ?>" media="(min-width: 768px)">
+						<?php if($main_fields['trecias_slide_img_mobiliam']['value']) { ?>
 						<source srcset="<?php echo $main_fields['trecias_slide_img_mobiliam']['value']['sizes']['2048x2048']; ?>" media="(max-width: 767px) and (orientation: portrait)">
+						<?php } ?>
 						<img decoding="async" src="<?php echo $main_fields['trecias_slide_img']['value']['sizes']['2048x2048']; ?>" alt="<?php echo $main_fields['antras_slide_img']['value']['alt'] ?>">
 					</picture>
 					<div class="hero__overlay"></div>
@@ -75,7 +81,9 @@ get_header('', ['main_data' => $main_fields]);
 						<source srcset="<?php echo $main_fields['ketvirtas_slide_img']['value']['sizes']['2048x2048']; ?>" media="(min-width: 1400px)">
 						<source srcset="<?php echo $main_fields['ketvirtas_slide_img']['value']['sizes']['1536x1536']; ?>" media="(min-width: 1200px)">
 						<source srcset="<?php echo $main_fields['ketvirtas_slide_img']['value']['sizes']['large']; ?>" media="(min-width: 768px)">
+						<?php if($main_fields['ketvirtas_slide_img_mobiliam']['value']) { ?>
 						<source srcset="<?php echo $main_fields['ketvirtas_slide_img_mobiliam']['value']['sizes']['2048x2048']; ?>" media="(max-width: 767px) and (orientation: portrait)">
+						<?php } ?>
 						<img decoding="async" src="<?php echo $main_fields['ketvirtas_slide_img']['value']['sizes']['2048x2048']; ?>" alt="<?php echo $main_fields['antras_slide_img']['value']['alt'] ?>">
 					</picture>
 					<div class="hero__overlay"></div>
@@ -91,7 +99,9 @@ get_header('', ['main_data' => $main_fields]);
 						<source srcset="<?php echo $main_fields['penktas_slide_img']['value']['sizes']['2048x2048']; ?>" media="(min-width: 1400px)">
 						<source srcset="<?php echo $main_fields['penktas_slide_img']['value']['sizes']['1536x1536']; ?>" media="(min-width: 1200px)">
 						<source srcset="<?php echo $main_fields['penktas_slide_img']['value']['sizes']['large']; ?>" media="(min-width: 768px)">
+						<?php if($main_fields['penktas_slide_img_mobiliam']['value']) { ?>
 						<source srcset="<?php echo $main_fields['penktas_slide_img_mobiliam']['value']['sizes']['2048x2048']; ?>" media="(max-width: 767px) and (orientation: portrait)">
+						<?php } ?>
 						<img decoding="async" src="<?php echo $main_fields['penktas_slide_img']['value']['sizes']['2048x2048']; ?>" alt="<?php echo $main_fields['antras_slide_img']['value']['alt'] ?>">
 					</picture>
 					<div class="hero__overlay"></div>

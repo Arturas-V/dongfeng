@@ -11,7 +11,8 @@
  */
 
 
-$image = get_field('hero_image'); 
+$image = get_field('hero_image');
+$image_mobile = get_field('paveikslelis_mobiliam'); 
 
 ?>
 
@@ -22,8 +23,11 @@ $image = get_field('hero_image');
         <source srcset="<?php echo esc_url($image['sizes']['2048x2048']); ?>" media="(min-width: 1200px)">
         <source srcset="<?php echo esc_url($image['sizes']['post-thumbnail']); ?>" media="(min-width: 1024px)">
         <source srcset="<?php echo esc_url($image['sizes']['large']); ?>" media="(min-width: 768px)">
+        <?php if($image_mobile) { ?>
+        <source srcset="<?php echo esc_url($image_mobile['sizes']['2048x2048']); ?>" media="(max-width: 767px) and (orientation: portrait)">
+        <?php } ?>
         <img 
-            src="<?php echo esc_url($image['sizes']['medium_large']); ?>" 
+            src="<?php echo esc_url($image['sizes']['2048x2048']); ?>" 
             alt="<?php echo esc_attr($image['alt']); ?>"
             decoding="async"
             loading="lazy"
