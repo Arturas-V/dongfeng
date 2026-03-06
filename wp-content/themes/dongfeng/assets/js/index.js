@@ -132,8 +132,8 @@
     if (e.target.closest('[data-hero-dot]')) return;
     if (isTransitioning) return;
 
-    // Reset autoplay on interaction
-    scheduleAutoplay();
+    // Stop autoplay during drag
+    stopAutoplay();
 
     isDragging = true;
     isHorizontalDrag = null;
@@ -211,6 +211,9 @@
     }
 
     goToIndex(targetIndex, true);
+
+    // Restart autoplay with regular 5 second interval
+    startAutoplay();
   };
 
   // Mouse events
@@ -260,6 +263,28 @@
   setTrackPosition(-getSliderWidth(), false);
   updateDots();
 
+  // Handle page visibility - pause when tab is hidden, resume when visible
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      // Stop autoplay when tab is hidden
+      stopAutoplay();
+      if (autoplayStartTimer) {
+        clearTimeout(autoplayStartTimer);
+        autoplayStartTimer = null;
+      }
+    } else {
+      // Reset to valid position and restart when tab becomes visible
+      // Ensure currentIndex is within valid range
+      if (currentIndex < 1 || currentIndex > totalSlides) {
+        currentIndex = 1;
+      }
+      setTrackPosition(-currentIndex * getSliderWidth(), false);
+      updateDots();
+      // Start autoplay immediately with regular interval (not initial delay)
+      startAutoplay();
+    }
+  });
+
   // Start autoplay after initialization
   scheduleAutoplay();
 })();
@@ -306,7 +331,7 @@
 
 /**
  * Car Showcase Slider
- * Arrow navigation slider for car cards
+ * Arrow navigation slider for car cards with drag support
  */
 (() => {
   const showcases = Array.from(document.querySelectorAll('[data-showcase]'));
@@ -318,7 +343,8 @@
     const width = window.innerWidth;
     if (width >= 1500) return 4;
     if (width >= 768) return 3;
-    return 2;
+    if (width > 600) return 2;
+    return 1;
   };
 
   // Initialize each showcase slider
@@ -331,6 +357,11 @@
     if (!track || cards.length === 0) return;
 
     let currentIndex = 0;
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let dragX = 0;
+    let isHorizontalDrag = null;
 
     const getCardWidth = () => {
       if (cards.length === 0) return 0;
@@ -356,21 +387,112 @@
       }
     };
 
-    const slideTo = (index, animate = true) => {
-      const maxIndex = getMaxIndex();
-      currentIndex = Math.max(0, Math.min(maxIndex, index));
-
-      const offset = -currentIndex * getCardWidth();
-
+    const setTrackPosition = (x, animate = false) => {
       if (animate) {
         track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
       } else {
         track.style.transition = 'none';
       }
+      track.style.transform = `translate3d(${x}px, 0, 0)`;
+    };
 
-      track.style.transform = `translate3d(${offset}px, 0, 0)`;
+    const slideTo = (index, animate = true) => {
+      const maxIndex = getMaxIndex();
+      currentIndex = Math.max(0, Math.min(maxIndex, index));
+
+      const offset = -currentIndex * getCardWidth();
+      setTrackPosition(offset, animate);
       updateButtons();
     };
+
+    // Drag handlers
+    const onDragStart = (e) => {
+      if (e.target.closest('[data-showcase-prev]') || e.target.closest('[data-showcase-next]')) return;
+
+      isDragging = true;
+      isHorizontalDrag = null;
+      showcase.classList.add('is-dragging');
+
+      const point = e.touches ? e.touches[0] : e;
+      startX = point.clientX;
+      startY = point.clientY;
+      dragX = 0;
+
+      track.style.transition = 'none';
+
+      if (e.type === 'mousedown') {
+        e.preventDefault();
+      }
+    };
+
+    const onDragMove = (e) => {
+      if (!isDragging) return;
+
+      const point = e.touches ? e.touches[0] : e;
+      const deltaX = point.clientX - startX;
+      const deltaY = point.clientY - startY;
+
+      // Determine drag direction on first significant movement
+      if (isHorizontalDrag === null) {
+        const absX = Math.abs(deltaX);
+        const absY = Math.abs(deltaY);
+
+        if (absX > 5 || absY > 5) {
+          isHorizontalDrag = absX > absY;
+
+          if (!isHorizontalDrag) {
+            isDragging = false;
+            showcase.classList.remove('is-dragging');
+            return;
+          }
+        } else {
+          return;
+        }
+      }
+
+      if (e.cancelable) {
+        e.preventDefault();
+      }
+
+      dragX = deltaX;
+
+      const baseX = -currentIndex * getCardWidth();
+      const newX = baseX + dragX;
+
+      setTrackPosition(newX, false);
+    };
+
+    const onDragEnd = () => {
+      if (!isDragging) return;
+
+      isDragging = false;
+      isHorizontalDrag = null;
+      showcase.classList.remove('is-dragging');
+
+      const cardWidth = getCardWidth();
+      const threshold = cardWidth * 0.2;
+
+      let targetIndex = currentIndex;
+
+      if (dragX < -threshold) {
+        targetIndex = currentIndex + 1;
+      } else if (dragX > threshold) {
+        targetIndex = currentIndex - 1;
+      }
+
+      slideTo(targetIndex, true);
+    };
+
+    // Mouse events
+    showcase.addEventListener('mousedown', onDragStart);
+    window.addEventListener('mousemove', onDragMove);
+    window.addEventListener('mouseup', onDragEnd);
+
+    // Touch events
+    showcase.addEventListener('touchstart', onDragStart, { passive: true });
+    showcase.addEventListener('touchmove', onDragMove, { passive: false });
+    showcase.addEventListener('touchend', onDragEnd);
+    showcase.addEventListener('touchcancel', onDragEnd);
 
     // Arrow click handlers
     if (prevBtn) {

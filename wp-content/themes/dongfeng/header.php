@@ -9,6 +9,10 @@
  * @since Dongfeng Lietuva 1.0
  */
 
+$main_data = $args['main_data'] ?? [];
+
+// var_dump();
+
 ?><!DOCTYPE html>
 
 <html class="no-js" <?php language_attributes(); ?>>
@@ -79,7 +83,7 @@
 								<ul class="swiper-wrapper" id="swiper-wrapper-1944de2b3b1d6c43" aria-live="polite" >
 
 									<li class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 3">
-										<a href="/dongfeng-box/" style=""><div class="model"><div><div class="fuel-types"><img src="https://dongfengwess.lv/wp-content/themes/dongfeng/assets/img/fuel-type/electric.png" alt="electric"></div><div class="labels"><span class="red">OFFER!</span></div></div><div class="car"><div><img src="/wp-content/uploads/2026/03/box-menu-240x135-1.png" alt="Dongfeng Box"></div><span class="title">Box</span><span class="sub-title">from 21 980 €</span></div></div></a>
+										<a href="/dongfeng-box/" style=""><div class="model"><div><div class="fuel-types"><img src="/wp-content/uploads/2026/03/fuel-type/electric.png" alt="electric"></div><div class="labels"><span class="red">OFFER!</span></div></div><div class="car"><div><img src="/wp-content/uploads/2026/03/box-menu-240x135-1.png" alt="Dongfeng Box"></div><span class="title">Box</span><span class="sub-title">from 21 980 €</span></div></div></a>
 									</li>
 									<li class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 3">
 										<a href="/dongfeng-mage"><div class="model"><div><div class="fuel-types"><img src="/wp-content/uploads/2026/03/petrol.png" alt="ice"><img src="/wp-content/uploads/2026/03/hybrid.png" alt="hybrid"></div><div class="labels"><span class="grey">Debut!</span></div></div><div class="car"><div><img src="/wp-content/uploads/2026/03/mage_green-240x135-1.png" alt="Dongfeng Mage"></div><span class="title">Mage</span><span class="sub-title">from 24 990  €</span></div></div></a>
@@ -126,7 +130,7 @@
 							<div class="swiper swiper-menu-item-3 swiper-initialized swiper-horizontal swiper-pointer-events">
 								<ul class="swiper-wrapper" id="swiper-wrapper-b8435210934510d25f" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
 									<li class="swiper-slide swiper-slide-active"  role="group" aria-label="1 / 1">
-										<a href="/m-hero"><div class="model"><div><div class="fuel-types"><img src="/wp-content/uploads/2026/03/electric.png" alt="electric"></div></div><div class="car"><div><img src="/wp-content/uploads/2026/03/mhero-menu-1-240x135-1.png" alt="M-Hero"></div><span class="title">M-HERO</span><span class="sub-title">169 990 €</span></div></div></a>
+										<a href="/mhero"><div class="model"><div><div class="fuel-types"><img src="/wp-content/uploads/2026/03/electric.png" alt="electric"></div></div><div class="car"><div><img src="/wp-content/uploads/2026/03/mhero-menu-1-240x135-1.png" alt="M-Hero"></div><span class="title">MHERO</span><span class="sub-title">169 990 €</span></div></div></a>
 									</li>
 								</ul>
 							<div class="swiper-button-prev swiper-button-prev-3 swiper-button-disabled swiper-button-lock" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-b8435210934510d25f" aria-disabled="true"></div><div class="swiper-button-next swiper-button-next-3 swiper-button-disabled swiper-button-lock" tabindex="-1" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-b8435210934510d25f" aria-disabled="true"></div></span></span></span></span></span></span></div>

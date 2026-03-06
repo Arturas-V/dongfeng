@@ -57,7 +57,7 @@
                 <img decoding="async" src="/wp-content/uploads/2026/03/dream-background-768x432.jpg" alt="">
             </picture>
             <?php } ?>
-            <?php if ($post->post_name == 'm-hero') { ?>
+            <?php if ($post->post_name == 'mhero') { ?>
             <picture class="car-gallery__viewport--background">
                 <source srcset="/wp-content/uploads/2026/03/mhero-conf-background.jpg" media="(min-width: 1400px)">
                 <source srcset="/wp-content/uploads/2026/03/mhero-conf-background-1200x675.jpg" media="(min-width: 1200px)">
@@ -279,7 +279,7 @@
                 <span>Pilko metalo</span>
             </button>
         <?php } ?>
-        <?php if ($post->post_name == 'm-hero') { ?>
+        <?php if ($post->post_name == 'mhero') { ?>
             <button class="car-gallery__tabs-tab active" data-car-image="<?php echo get_field('juoda_matine')['url'] ?>" data-color="rgba(0,0,0,0.3)">
                 <img decoding="async" src="/wp-content/themes/dongfeng/assets/img/mhero-blackout-color.png" alt="M-Hero Juoda matinė">
                 <span>Juoda matinė</span>
