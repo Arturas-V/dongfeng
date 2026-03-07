@@ -25,7 +25,7 @@ get_header('', ['main_data' => $main_fields]);
 					?>
 				<article class="hero__slide hero__slide--one">
 					<div class="hero__slide-video">
-						<video autoplay="" muted="" loop="" playsinline="">
+						<video autoplay muted loop playsinline webkit-playsinline class="hero-video" preload="auto">
 							<?php if($video_mob['url']) { ?>
 							<source src="<?php echo esc_url($video_mob['url']); ?>" media="(max-width: 767px)">
 							<?php } ?>

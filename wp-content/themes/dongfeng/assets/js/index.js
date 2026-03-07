@@ -17,6 +17,20 @@
   const firstClone = slides[0].cloneNode(true);
   const lastClone = slides[totalSlides - 1].cloneNode(true);
 
+  // Remove video elements from clones
+  [firstClone, lastClone].forEach(clone => {
+    const video = clone.querySelector('video');
+    if (video) {
+      // Option A: Remove video completely
+      // video.remove();
+      
+      // Option B: Keep but reset source (better)
+      video.innerHTML = ''; // Clear sources
+      video.removeAttribute('src'); // Remove src attribute
+      video.load(); // Reset
+    }
+  });
+
   firstClone.classList.add('hero__slide--clone');
   lastClone.classList.add('hero__slide--clone');
 
@@ -282,6 +296,19 @@
       updateDots();
       // Start autoplay immediately with regular interval (not initial delay)
       startAutoplay();
+    }
+  });
+
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden) {
+      // Page is visible again
+      document.querySelectorAll('video').forEach(video => {
+        // Only reload if it's the actual video (not a clone)
+        if (!video.closest('.hero__slide--clone')) {
+          video.load();
+          video.play().catch(e => console.log('Autoplay prevented:', e));
+        }
+      });
     }
   });
 
@@ -1173,4 +1200,65 @@ function initMap() {
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
+})();
+
+/**
+ * Cookie Consent Banner
+ * Simple cookie banner with Lithuanian text
+ */
+(() => {
+    const COOKIE_NAME = 'cookie_consent';
+    const COOKIE_EXPIRY_DAYS = 365;
+
+    // Check if consent already given
+    const hasConsent = () => {
+        return document.cookie.split(';').some(c => c.trim().startsWith(COOKIE_NAME + '='));
+    };
+
+    // Set consent cookie
+    const setConsent = (value) => {
+        const date = new Date();
+        date.setTime(date.getTime() + (COOKIE_EXPIRY_DAYS * 24 * 60 * 60 * 1000));
+        document.cookie = `${COOKIE_NAME}=${value};expires=${date.toUTCString()};path=/;SameSite=Lax`;
+    };
+
+    // Don't show if already consented
+    if (hasConsent()) return;
+
+    // Create banner
+    const banner = document.createElement('div');
+    banner.className = 'cookie-banner';
+    banner.innerHTML = `
+        <div class="cookie-banner__content">
+            <p class="cookie-banner__text">
+                Šioje svetainėje naudojami slapukai, siekiant pagerinti jūsų naršymo patirtį ir analizuoti svetainės lankomumą.
+                Tęsdami naršymą, jūs sutinkate su slapukų naudojimu.
+            </p>
+            <div class="cookie-banner__actions">
+                <button class="cookie-banner__btn cookie-banner__btn--accept">Sutinku</button>
+                <button class="cookie-banner__btn cookie-banner__btn--decline">Atmesti</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(banner);
+
+    // Show banner with animation
+    requestAnimationFrame(() => {
+        banner.classList.add('is-visible');
+    });
+
+    // Handle accept
+    banner.querySelector('.cookie-banner__btn--accept').addEventListener('click', () => {
+        setConsent('accepted');
+        banner.classList.remove('is-visible');
+        setTimeout(() => banner.remove(), 300);
+    });
+
+    // Handle decline
+    banner.querySelector('.cookie-banner__btn--decline').addEventListener('click', () => {
+        setConsent('declined');
+        banner.classList.remove('is-visible');
+        setTimeout(() => banner.remove(), 300);
+    });
 })();
