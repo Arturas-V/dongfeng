@@ -392,12 +392,14 @@ get_header('', ['main_data' => $main_fields]);
     </div>
 
 	<div class="car-page__actions">
+		<?php if(get_field('kainorastis')) { ?>
 		<div class="car-page__actions-item">
-			<button aria-label="Price list" class="car-page__actions-btn" data-action="price-list" data-file-url="<?php echo get_field('kainorastis'); ?>">
+			<a aria-label="Price list" class="car-page__actions-btn" href="<?php echo get_field('kainorastis')['url']; ?>" download>
 				<img decoding="async" src="/wp-content/themes/dongfeng/assets/img/arrow-down.svg" alt="Kainoraštis">
-			</button>
+			</a>
 			<div class="car-page__actions-tooltip" role="tooltip">Kainoraštis</div>
-		</div>                            
+		</div>          
+		<?php } ?>                  
 		<div class="car-page__actions-item">
 			<button aria-label="Test drive" class="car-page__actions-btn" data-popup="test-drive">
 				<img decoding="async" src="/wp-content/themes/dongfeng/assets/img/car.svg" alt="Bandomasis važevimas">

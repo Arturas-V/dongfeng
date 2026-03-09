@@ -29,8 +29,6 @@ $image_mobile = get_field('paveikslelis_mobiliam');
         <img 
             src="<?php echo esc_url($image['sizes']['2048x2048']); ?>" 
             alt="<?php echo esc_attr($image['alt']); ?>"
-            decoding="async"
-            loading="lazy"
         >
     </picture>
     <?php endif; ?>

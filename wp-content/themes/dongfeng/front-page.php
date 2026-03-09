@@ -48,7 +48,7 @@ get_header('', ['main_data' => $main_fields]);
 						<?php if($main_fields['antras_slide_img_mobiliam']['value']) { ?>
 						<source srcset="<?php echo $main_fields['antras_slide_img_mobiliam']['value']['sizes']['2048x2048']; ?>" media="(max-width: 767px) and (orientation: portrait)">
 						<?php } ?>
-						<img decoding="async" src="<?php echo $main_fields['antras_slide_img']['value']['sizes']['2048x2048']; ?>" alt="<?php echo $main_fields['antras_slide_img']['value']['alt'] ?>">
+						<img src="<?php echo $main_fields['antras_slide_img']['value']['sizes']['2048x2048']; ?>" alt="<?php echo $main_fields['antras_slide_img']['value']['alt'] ?>">
 					</picture>
 					<div class="hero__overlay"></div>
 					<div class="hero__content">
@@ -66,7 +66,7 @@ get_header('', ['main_data' => $main_fields]);
 						<?php if($main_fields['trecias_slide_img_mobiliam']['value']) { ?>
 						<source srcset="<?php echo $main_fields['trecias_slide_img_mobiliam']['value']['sizes']['2048x2048']; ?>" media="(max-width: 767px) and (orientation: portrait)">
 						<?php } ?>
-						<img decoding="async" src="<?php echo $main_fields['trecias_slide_img']['value']['sizes']['2048x2048']; ?>" alt="<?php echo $main_fields['antras_slide_img']['value']['alt'] ?>">
+						<img src="<?php echo $main_fields['trecias_slide_img']['value']['sizes']['2048x2048']; ?>" alt="<?php echo $main_fields['antras_slide_img']['value']['alt'] ?>">
 					</picture>
 					<div class="hero__overlay"></div>
 					<div class="hero__content">
@@ -84,7 +84,7 @@ get_header('', ['main_data' => $main_fields]);
 						<?php if($main_fields['ketvirtas_slide_img_mobiliam']['value']) { ?>
 						<source srcset="<?php echo $main_fields['ketvirtas_slide_img_mobiliam']['value']['sizes']['2048x2048']; ?>" media="(max-width: 767px) and (orientation: portrait)">
 						<?php } ?>
-						<img decoding="async" src="<?php echo $main_fields['ketvirtas_slide_img']['value']['sizes']['2048x2048']; ?>" alt="<?php echo $main_fields['antras_slide_img']['value']['alt'] ?>">
+						<img src="<?php echo $main_fields['ketvirtas_slide_img']['value']['sizes']['2048x2048']; ?>" alt="<?php echo $main_fields['antras_slide_img']['value']['alt'] ?>">
 					</picture>
 					<div class="hero__overlay"></div>
 					<div class="hero__content">
@@ -102,7 +102,7 @@ get_header('', ['main_data' => $main_fields]);
 						<?php if($main_fields['penktas_slide_img_mobiliam']['value']) { ?>
 						<source srcset="<?php echo $main_fields['penktas_slide_img_mobiliam']['value']['sizes']['2048x2048']; ?>" media="(max-width: 767px) and (orientation: portrait)">
 						<?php } ?>
-						<img decoding="async" src="<?php echo $main_fields['penktas_slide_img']['value']['sizes']['2048x2048']; ?>" alt="<?php echo $main_fields['antras_slide_img']['value']['alt'] ?>">
+						<img src="<?php echo $main_fields['penktas_slide_img']['value']['sizes']['2048x2048']; ?>" alt="<?php echo $main_fields['antras_slide_img']['value']['alt'] ?>">
 					</picture>
 					<div class="hero__overlay"></div>
 					<div class="hero__content">
