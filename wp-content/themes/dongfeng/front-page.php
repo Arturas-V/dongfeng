@@ -274,6 +274,21 @@ get_header('', ['main_data' => $main_fields]);
 		<div class="car-showcase__viewport">
 
 			<div class="car-showcase__track">
+			    
+			    <div class="car-card">
+					<?php if($main_fields['voyah_free_etikete']['value']) { ?>
+					<div class="car-card__badge <?php if($main_fields['voyah_free_etikete']['value'][0] == 'Akcija') { echo 'car-card__badge-red'; } ?>"><?php echo $main_fields['voyah_free_etikete']['value'][0]; ?></div>
+					<?php } ?>
+					<div class="car-card__image">
+						<img decoding="async" src="<?php echo $main_fields['voyah_free_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['voyah_free_img']['value']['alt'] ?>">
+					</div>
+					<h3><?php echo $main_fields['voyah_free_nuoroda']['value']['title']; ?></h3>
+					<div class="car-card__price"><?php echo $main_fields['voyah_free_kaina']['value']; ?></div>
+					<div class="car-card__actions flex flex-column">
+						<a href="<?php echo $main_fields['voyah_free_nuoroda']['value']['url']; ?>" class="button button--dark">Sužinok daugiau</a>
+						<button data-popup="test-drive" class="button button--light" type="button">Bandomasis važevimas</button>
+					</div>
+				</div>
 
 				<div class="car-card">
 					<?php if($main_fields['voyah_dream_etikete']['value']) { ?>

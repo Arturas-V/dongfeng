@@ -45,10 +45,9 @@
                 <source srcset="/wp-content/uploads/2026/03/utour-background-2-1200x675.jpg" media="(min-width: 1200px)">
                 <source srcset="/wp-content/uploads/2026/03/utour-background-2-1024x576.jpg" media="(min-width: 992px)">
                 <source srcset="/wp-content/uploads/2026/03/utour-background-2-768x432.jpg" media="(min-width: 768px)">
-                <img decoding="async" src="/wp-content/uploads/2026/03/utour-background-2-768x432.jpg" alt="">
             </picture>
             <?php } ?>
-            <?php if ($post->post_name == 'voyah-dream') { ?>
+            <?php if ($post->post_name == 'voyah-dream' || 'voyah-free') { ?>
             <picture class="car-gallery__viewport--background">
                 <source srcset="/wp-content/uploads/2026/03/dream-background.jpg" media="(min-width: 1400px)">
                 <source srcset="/wp-content/uploads/2026/03/dream-background-1200x675.jpg" media="(min-width: 1200px)">
@@ -291,6 +290,24 @@
             <button class="car-gallery__tabs-tab" data-car-image="<?php echo get_field('pilka_matine')['url'] ?>" data-color="rgba(114,114,114,0.3)">
                 <img decoding="async" src="/wp-content/themes/dongfeng/assets/img/mhero-titan-2.png" alt="M-Hero Pilka matinė">
                 <span>Pilka matinė</span>
+            </button>
+        <?php } ?>
+        <?php if ($post->post_name == 'voyah-free') { ?>
+            <button class="car-gallery__tabs-tab active" data-car-image="<?php echo get_field('juodo_metalo')['url'] ?>" data-color="rgba(255,255,255,0.25)" >
+                <img decoding="async" src="/wp-content/themes/dongfeng/assets/img/t5evo-black-color-2.png" alt="Voyah Free Juodo metalo">
+                <span>Juodo metalo</span>
+            </button>
+            <button class="car-gallery__tabs-tab " data-car-image="<?php echo get_field('balto_metalo')['url'] ?>" data-color="rgba(10,10,10,0.25)" >
+                <img decoding="async" src="/wp-content/themes/dongfeng/assets/img/t5evo-white-color-2.png" alt="Voyah Free Balto metalo">
+                <span>Balto metalo</span>
+            </button>
+            <button class="car-gallery__tabs-tab" data-car-image="<?php echo get_field('zalio_metalo')['url'] ?>" data-color="rgba(185,224,168,0.25)">
+                <img decoding="async" src="/wp-content/themes/dongfeng/assets/img/v-courage-green-color-2.png" alt="Voyah Free Žalio metalo">
+                <span>Žalio metalo</span>
+            </button>
+            <button class="car-gallery__tabs-tab" data-car-image="<?php echo get_field('sviesiai_melyno_metalo')['url'] ?>" data-color="rgba(33,150,209,0.25)">
+                <img decoding="async" src="/wp-content/themes/dongfeng/assets/img/v-courage-blue-color-2-1.png" alt="Voyah Free Sviesiai melyno metalo">
+                <span>Šviesiai mėlyno metalo</span>
             </button>
         <?php } ?>
     </div>

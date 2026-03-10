@@ -1132,9 +1132,9 @@ document.addEventListener('DOMContentLoaded', function() {
  * ACF Google Map
  * Displays map with custom marker
  */
+
 function initMap() {
     const mapElements = document.querySelectorAll('.acf-map');
-
     if (mapElements.length === 0) return;
 
     const customMarkerIcon = '/wp-content/uploads/2026/03/market.png';
@@ -1143,52 +1143,58 @@ function initMap() {
         const markerElements = mapElement.querySelectorAll('.marker');
         if (markerElements.length === 0) return;
 
-        // Get first marker position for initial center
         const firstMarker = markerElements[0];
         const initialLat = parseFloat(firstMarker.dataset.lat);
         const initialLng = parseFloat(firstMarker.dataset.lng);
 
-        // Create map
         const map = new google.maps.Map(mapElement, {
             zoom: 13,
             center: { lat: initialLat, lng: initialLng },
             mapTypeControl: false,
-            streetViewControl: false
+            streetViewControl: false,
+            mapId: 'DEMO_MAP_ID' // replace with your real Map ID in production
         });
 
-        // Add markers
         markerElements.forEach(markerElement => {
             const lat = parseFloat(markerElement.dataset.lat);
             const lng = parseFloat(markerElement.dataset.lng);
             const position = { lat, lng };
 
-            const marker = new google.maps.Marker({
-                position,
+            // Create custom image element for AdvancedMarkerElement
+            const img = document.createElement('img');
+            img.src = customMarkerIcon;
+            img.alt = markerElement.querySelector('h3')?.textContent || '';
+            img.style.width = '80px';
+            img.style.height = '110px';
+
+            const marker = new google.maps.marker.AdvancedMarkerElement({
                 map,
-                icon: {
-                    url: customMarkerIcon,
-                    scaledSize: new google.maps.Size(80, 110)
-                },
-                title: markerElement.querySelector('h3')?.textContent || ''
+                position,
+                title: markerElement.querySelector('h3')?.textContent || '',
+                content: img
             });
 
-            // Add info window if content exists
             const infoContent = markerElement.querySelector('.info-window');
             if (infoContent) {
                 const infoWindow = new google.maps.InfoWindow({
                     content: infoContent.innerHTML
                 });
 
-                marker.addListener('click', () => {
-                    infoWindow.open(map, marker);
+                marker.addEventListener('gmp-click', () => {
+                    infoWindow.open({
+                        anchor: marker,
+                        map
+                    });
                 });
             }
 
-            // Hide the marker div
             markerElement.style.display = 'none';
         });
     });
 }
+
+// Make sure initMap is global for callback
+window.initMap = initMap;
 
 // Load Google Maps API
 (function() {
@@ -1196,69 +1202,142 @@ function initMap() {
     if (!mapExists) return;
 
     const script = document.createElement('script');
-    script.src = 'https://maps.googleapis.com/maps/api/js?key='+GoogleAPIkey+'&callback=initMap';
+    script.src =
+        'https://maps.googleapis.com/maps/api/js?key=' +
+        GoogleAPIkey +
+        '&callback=initMap&loading=async&libraries=marker&v=weekly';
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
 })();
 
+// function initMap() {
+//     const mapElements = document.querySelectorAll('.acf-map');
+
+//     if (mapElements.length === 0) return;
+
+//     const customMarkerIcon = '/wp-content/uploads/2026/03/market.png';
+
+//     mapElements.forEach(mapElement => {
+//         const markerElements = mapElement.querySelectorAll('.marker');
+//         if (markerElements.length === 0) return;
+
+//         // Get first marker position for initial center
+//         const firstMarker = markerElements[0];
+//         const initialLat = parseFloat(firstMarker.dataset.lat);
+//         const initialLng = parseFloat(firstMarker.dataset.lng);
+
+//         // Create map
+//         const map = new google.maps.Map(mapElement, {
+//             zoom: 13,
+//             center: { lat: initialLat, lng: initialLng },
+//             mapTypeControl: false,
+//             streetViewControl: false
+//         });
+
+//         // Add markers
+//         markerElements.forEach(markerElement => {
+//             const lat = parseFloat(markerElement.dataset.lat);
+//             const lng = parseFloat(markerElement.dataset.lng);
+//             const position = { lat, lng };
+
+//             const marker = new google.maps.Marker({
+//                 position,
+//                 map,
+//                 icon: {
+//                     url: customMarkerIcon,
+//                     scaledSize: new google.maps.Size(80, 110)
+//                 },
+//                 title: markerElement.querySelector('h3')?.textContent || ''
+//             });
+
+//             // Add info window if content exists
+//             const infoContent = markerElement.querySelector('.info-window');
+//             if (infoContent) {
+//                 const infoWindow = new google.maps.InfoWindow({
+//                     content: infoContent.innerHTML
+//                 });
+
+//                 marker.addListener('click', () => {
+//                     infoWindow.open(map, marker);
+//                 });
+//             }
+
+//             // Hide the marker div
+//             markerElement.style.display = 'none';
+//         });
+//     });
+// }
+
+// // Load Google Maps API
+// (function() {
+//     const mapExists = document.querySelector('.acf-map');
+//     if (!mapExists) return;
+
+//     const script = document.createElement('script');
+//     script.src = 'https://maps.googleapis.com/maps/api/js?key='+GoogleAPIkey+'&callback=initMap';
+//     script.async = true;
+//     script.defer = true;
+//     document.body.appendChild(script);
+// })();
+
 /**
  * Cookie Consent Banner
  * Simple cookie banner with Lithuanian text
  */
-(() => {
-    const COOKIE_NAME = 'cookie_consent';
-    const COOKIE_EXPIRY_DAYS = 365;
+// (() => {
+//     const COOKIE_NAME = 'cookie_consent';
+//     const COOKIE_EXPIRY_DAYS = 365;
 
-    // Check if consent already given
-    const hasConsent = () => {
-        return document.cookie.split(';').some(c => c.trim().startsWith(COOKIE_NAME + '='));
-    };
+//     // Check if consent already given
+//     const hasConsent = () => {
+//         return document.cookie.split(';').some(c => c.trim().startsWith(COOKIE_NAME + '='));
+//     };
 
-    // Set consent cookie
-    const setConsent = (value) => {
-        const date = new Date();
-        date.setTime(date.getTime() + (COOKIE_EXPIRY_DAYS * 24 * 60 * 60 * 1000));
-        document.cookie = `${COOKIE_NAME}=${value};expires=${date.toUTCString()};path=/;SameSite=Lax`;
-    };
+//     // Set consent cookie
+//     const setConsent = (value) => {
+//         const date = new Date();
+//         date.setTime(date.getTime() + (COOKIE_EXPIRY_DAYS * 24 * 60 * 60 * 1000));
+//         document.cookie = `${COOKIE_NAME}=${value};expires=${date.toUTCString()};path=/;SameSite=Lax`;
+//     };
 
-    // Don't show if already consented
-    if (hasConsent()) return;
+//     // Don't show if already consented
+//     if (hasConsent()) return;
 
-    // Create banner
-    const banner = document.createElement('div');
-    banner.className = 'cookie-banner';
-    banner.innerHTML = `
-        <div class="cookie-banner__content">
-            <p class="cookie-banner__text">
-                Šioje svetainėje naudojami slapukai, siekiant pagerinti jūsų naršymo patirtį ir analizuoti svetainės lankomumą.
-                Tęsdami naršymą, jūs sutinkate su slapukų naudojimu.
-            </p>
-            <div class="cookie-banner__actions">
-                <button class="cookie-banner__btn cookie-banner__btn--accept">Sutinku</button>
-                <button class="cookie-banner__btn cookie-banner__btn--decline">Atmesti</button>
-            </div>
-        </div>
-    `;
+//     // Create banner
+//     const banner = document.createElement('div');
+//     banner.className = 'cookie-banner';
+//     banner.innerHTML = `
+//         <div class="cookie-banner__content">
+//             <p class="cookie-banner__text">
+//                 Šioje svetainėje naudojami slapukai, siekiant pagerinti jūsų naršymo patirtį ir analizuoti svetainės lankomumą.
+//                 Tęsdami naršymą, jūs sutinkate su slapukų naudojimu.
+//             </p>
+//             <div class="cookie-banner__actions">
+//                 <button class="cookie-banner__btn cookie-banner__btn--accept">Sutinku</button>
+//                 <button class="cookie-banner__btn cookie-banner__btn--decline">Atmesti</button>
+//             </div>
+//         </div>
+//     `;
 
-    document.body.appendChild(banner);
+//     document.body.appendChild(banner);
 
-    // Show banner with animation
-    requestAnimationFrame(() => {
-        banner.classList.add('is-visible');
-    });
+//     // Show banner with animation
+//     requestAnimationFrame(() => {
+//         banner.classList.add('is-visible');
+//     });
 
-    // Handle accept
-    banner.querySelector('.cookie-banner__btn--accept').addEventListener('click', () => {
-        setConsent('accepted');
-        banner.classList.remove('is-visible');
-        setTimeout(() => banner.remove(), 300);
-    });
+//     // Handle accept
+//     banner.querySelector('.cookie-banner__btn--accept').addEventListener('click', () => {
+//         setConsent('accepted');
+//         banner.classList.remove('is-visible');
+//         setTimeout(() => banner.remove(), 300);
+//     });
 
-    // Handle decline
-    banner.querySelector('.cookie-banner__btn--decline').addEventListener('click', () => {
-        setConsent('declined');
-        banner.classList.remove('is-visible');
-        setTimeout(() => banner.remove(), 300);
-    });
-})();
+//     // Handle decline
+//     banner.querySelector('.cookie-banner__btn--decline').addEventListener('click', () => {
+//         setConsent('declined');
+//         banner.classList.remove('is-visible');
+//         setTimeout(() => banner.remove(), 300);
+//     });
+// })();

@@ -25,6 +25,7 @@ $icons = [
 
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="google-site-verification" content="nxqaUCC4v9IVZeVq6sQdWvSqzrtiUGUtFnahIXVPG5w"/>
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -237,7 +238,26 @@ $icons = [
 							<li class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children brand-slider"><div class="brand"><div class="brand-content"><img src="/wp-content/uploads/2026/03/voyah-menu-logo-200x80-1.png" alt="Voyah logotips"><span class="title">Premium</span><span class="sub-title">REV | PHEV | BEV</span><span class="brand-name">Voyah</span></div></div>
 							<div class="swiper swiper-menu-item-2 swiper-initialized swiper-horizontal swiper-pointer-events">
 								<ul class="swiper-wrapper" id="swiper-wrapper-48e610cc106c5e638d" aria-live="polite" >
-									<li class="swiper-slide swiper-slide-active"  role="group" aria-label="1 / 2">
+								    <li class="swiper-slide swiper-slide-active"  role="group" aria-label="1 / 3">
+										<a href="<?php echo $main_fields['voyah_free_nuoroda']['value']['url']; ?>">
+											<div class="model">
+												<div>
+													<div class="fuel-types">
+														<?php foreach ((array)$main_fields['voyah_free_tipas']['value'] as $type) { 
+															if ($icon = $icons[trim($type)] ?? null) {
+																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
+														} } ?>
+													</div>
+												</div>
+												<div class="car">
+													<img decoding="async" src="<?php echo $main_fields['voyah_free_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['voyah_free_img']['value']['alt'] ?>">
+													<span class="title"><?php echo $main_fields['voyah_free_nuoroda']['value']['title']; ?></span>
+													<span class="sub-title"><?php echo $main_fields['voyah_free_kaina']['value']; ?></span>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="swiper-slide swiper-slide-active"  role="group" aria-label="1 / 3">
 										<a href="<?php echo $main_fields['voyah_dream_nuoroda']['value']['url']; ?>">
 											<div class="model">
 												<div>
@@ -256,7 +276,7 @@ $icons = [
 											</div>
 										</a>
 									</li>
-									<li class="swiper-slide swiper-slide-next"  role="group" aria-label="2 / 2">
+									<li class="swiper-slide swiper-slide-next"  role="group" aria-label="3 / 3">
 										<a href="<?php echo $main_fields['voyah_courage_nuoroda']['value']['url']; ?>">
 											<div class="model">
 												<div>
