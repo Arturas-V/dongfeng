@@ -166,6 +166,7 @@ $icons = [
 																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
 														} } ?>
 													</div>
+													<?php if($main_fields['t5_evo_etikete']['value']) { ?><div class="labels"><span class="<?php if($main_fields['t5_evo_etikete']['value'][0] == 'Akcija') { echo 'red'; } ?>"><?php echo $main_fields['t5_evo_etikete']['value'][0]; ?></span></div><?php } ?>
 												</div>
 												<div class="car">
 													<img decoding="async" src="<?php echo $main_fields['t5_evo_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['t5_evo_img']['value']['alt'] ?>">
@@ -185,6 +186,7 @@ $icons = [
 																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
 														} } ?>
 													</div>
+													<?php if($main_fields['u_tour_etikete']['value']) { ?><div class="labels"><span class="<?php if($main_fields['u_tour_etikete']['value'][0] == 'Akcija') { echo 'red'; } ?>"><?php echo $main_fields['u_tour_etikete']['value'][0]; ?></span></div><?php } ?>
 												</div>
 												<div class="car">
 													<img decoding="async" src="<?php echo $main_fields['u_tour_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['u_tour_img']['value']['alt'] ?>">
@@ -204,6 +206,7 @@ $icons = [
 																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
 														} } ?>
 													</div>
+													<?php if($main_fields['forthing_v9_etikete']['value']) { ?><div class="labels"><span class="<?php if($main_fields['forthing_v9_etikete']['value'][0] == 'Akcija') { echo 'red'; } ?>"><?php echo $main_fields['forthing_v9_etikete']['value'][0]; ?></span></div><?php } ?>
 												</div>
 												<div class="car">
 													<img decoding="async" src="<?php echo $main_fields['forthing_v9_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['forthing_v9_img']['value']['alt'] ?>">
@@ -223,6 +226,7 @@ $icons = [
 																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
 														} } ?>
 													</div>
+													<?php if($main_fields['forthing_s7_etikete']['value']) { ?><div class="labels"><span class="<?php if($main_fields['forthing_s7_etikete']['value'][0] == 'Akcija') { echo 'red'; } ?>"><?php echo $main_fields['forthing_s7_etikete']['value'][0]; ?></span></div><?php } ?>
 												</div>
 												<div class="car">
 													<img decoding="async" src="<?php echo $main_fields['forthing_s7_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['forthing_s7_img']['value']['alt'] ?>">
@@ -248,6 +252,7 @@ $icons = [
 																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
 														} } ?>
 													</div>
+													<?php if($main_fields['voyah_free_etikete']['value']) { ?><div class="labels"><span class="<?php if($main_fields['voyah_free_etikete']['value'][0] == 'Akcija') { echo 'red'; } ?>"><?php echo $main_fields['voyah_free_etikete']['value'][0]; ?></span></div><?php } ?>
 												</div>
 												<div class="car">
 													<img decoding="async" src="<?php echo $main_fields['voyah_free_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['voyah_free_img']['value']['alt'] ?>">
@@ -267,6 +272,7 @@ $icons = [
 																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
 														} } ?>
 													</div>
+													<?php if($main_fields['voyah_dream_etikete']['value']) { ?><div class="labels"><span class="<?php if($main_fields['voyah_dream_etikete']['value'][0] == 'Akcija') { echo 'red'; } ?>"><?php echo $main_fields['voyah_dream_etikete']['value'][0]; ?></span></div><?php } ?>
 												</div>
 												<div class="car">
 													<img decoding="async" src="<?php echo $main_fields['voyah_dream_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['voyah_dream_img']['value']['alt'] ?>">
@@ -286,6 +292,7 @@ $icons = [
 																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
 														} } ?>
 													</div>
+													<?php if($main_fields['voyah_courage_etikete']['value']) { ?><div class="labels"><span class="<?php if($main_fields['voyah_courage_etikete']['value'][0] == 'Akcija') { echo 'red'; } ?>"><?php echo $main_fields['voyah_courage_etikete']['value'][0]; ?></span></div><?php } ?>
 												</div>
 												<div class="car">
 													<img decoding="async" src="<?php echo $main_fields['voyah_courage_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['voyah_courage_img']['value']['alt'] ?>">
@@ -311,6 +318,7 @@ $icons = [
 																echo '<img src="/wp-content/uploads/2026/03/' . $icon[0] . '" alt="' . $icon[1] . '" class="fuel-icon">';
 														} } ?>
 													</div>
+													<?php if($main_fields['mhero_etikete']['value']) { ?><div class="labels"><span class="<?php if($main_fields['mhero_etikete']['value'][0] == 'Akcija') { echo 'red'; } ?>"><?php echo $main_fields['mhero_etikete']['value'][0]; ?></span></div><?php } ?>
 												</div>
 												<div class="car">
 													<img decoding="async" src="<?php echo $main_fields['mhero_img']['value']['sizes']['large']; ?>" alt="<?php echo $main_fields['mhero_img']['value']['alt'] ?>">
