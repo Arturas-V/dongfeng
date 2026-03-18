@@ -153,8 +153,8 @@ get_header('', ['main_data' => $main_fields]);
 					<h3><?php echo $main_fields['box_nuoroda']['value']['title']; ?></h3>
 					<div class="car-card__price"><?php echo $main_fields['box_kaina']['value']; ?></div>
 					<div class="car-card__actions flex flex-column">
-						<a href="<?php echo $main_fields['box_nuoroda']['value']['url']; ?>" class="button button--dark">Sužinok daugiau</a>
-						<button data-popup="test-drive" class="button button--light" type="button">Bandomasis važevimas</button>
+						<a href="<?php echo $main_fields['box_nuoroda']['value']['url']; ?>" class="button button--dark"><?php echo $main_fields['masino_modelio_pirmas_mygtukas']['value']; ?></a>
+						<button data-popup="test-drive" class="button button--light" type="button"><?php echo $main_fields['masino_modelio_antras_mygtukas']['value']; ?></button>
 					</div>
 				</div>
 
@@ -168,8 +168,8 @@ get_header('', ['main_data' => $main_fields]);
 					<h3><?php echo $main_fields['mage_nuoroda']['value']['title']; ?></h3>
 					<div class="car-card__price"><?php echo $main_fields['mage_kaina']['value']; ?></div>
 					<div class="car-card__actions flex flex-column">
-						<a href="<?php echo $main_fields['mage_nuoroda']['value']['url']; ?>" class="button button--dark">Sužinok daugiau</a>
-						<button data-popup="test-drive" class="button button--light" type="button">Bandomasis važevimas</button>
+						<a href="<?php echo $main_fields['mage_nuoroda']['value']['url']; ?>" class="button button--dark"><?php echo $main_fields['masino_modelio_pirmas_mygtukas']['value']; ?></a>
+						<button data-popup="test-drive" class="button button--light" type="button"><?php echo $main_fields['masino_modelio_antras_mygtukas']['value']; ?></button>
 					</div>
 				</div>
 
@@ -183,8 +183,8 @@ get_header('', ['main_data' => $main_fields]);
 					<h3><?php echo $main_fields['huge_nuoroda']['value']['title']; ?></h3>
 					<div class="car-card__price"><?php echo $main_fields['huge_kaina']['value']; ?></div>
 					<div class="car-card__actions flex flex-column">
-						<a href="<?php echo $main_fields['huge_nuoroda']['value']['url']; ?>" class="button button--dark">Sužinok daugiau</a>
-						<button data-popup="test-drive" class="button button--light" type="button">Bandomasis važevimas</button>
+						<a href="<?php echo $main_fields['huge_nuoroda']['value']['url']; ?>" class="button button--dark"><?php echo $main_fields['masino_modelio_pirmas_mygtukas']['value']; ?></a>
+						<button data-popup="test-drive" class="button button--light" type="button"><?php echo $main_fields['masino_modelio_antras_mygtukas']['value']; ?></button>
 					</div>
 				</div>
 
@@ -211,8 +211,8 @@ get_header('', ['main_data' => $main_fields]);
 					<h3><?php echo $main_fields['t5_evo_nuoroda']['value']['title']; ?></h3>
 					<div class="car-card__price"><?php echo $main_fields['t5_evo_kaina']['value']; ?></div>
 					<div class="car-card__actions flex flex-column">
-						<a href="<?php echo $main_fields['t5_evo_nuoroda']['value']['url']; ?>" class="button button--dark">Sužinok daugiau</a>
-						<button data-popup="test-drive" class="button button--light" type="button">Bandomasis važevimas</button>
+						<a href="<?php echo $main_fields['t5_evo_nuoroda']['value']['url']; ?>" class="button button--dark"><?php echo $main_fields['masino_modelio_pirmas_mygtukas']['value']; ?></a>
+						<button data-popup="test-drive" class="button button--light" type="button"><?php echo $main_fields['masino_modelio_antras_mygtukas']['value']; ?></button>
 					</div>
 				</div>
 
@@ -226,8 +226,8 @@ get_header('', ['main_data' => $main_fields]);
 					<h3><?php echo $main_fields['u_tour_nuoroda']['value']['title']; ?></h3>
 					<div class="car-card__price"><?php echo $main_fields['u_tour_kaina']['value']; ?></div>
 					<div class="car-card__actions flex flex-column">
-						<a href="<?php echo $main_fields['u_tour_nuoroda']['value']['url']; ?>" class="button button--dark">Sužinok daugiau</a>
-						<button data-popup="test-drive" class="button button--light" type="button">Bandomasis važevimas</button>
+						<a href="<?php echo $main_fields['u_tour_nuoroda']['value']['url']; ?>" class="button button--dark"><?php echo $main_fields['masino_modelio_pirmas_mygtukas']['value']; ?></a>
+						<button data-popup="test-drive" class="button button--light" type="button"><?php echo $main_fields['masino_modelio_antras_mygtukas']['value']; ?></button>
 					</div>
 				</div>
 
@@ -241,8 +241,8 @@ get_header('', ['main_data' => $main_fields]);
 					<h3><?php echo $main_fields['forthing_v9_nuoroda']['value']['title']; ?></h3>
 					<div class="car-card__price"><?php echo $main_fields['forthing_v9_kaina']['value']; ?></div>
 					<div class="car-card__actions flex flex-column">
-						<a href="<?php echo $main_fields['forthing_v9_nuoroda']['value']['url']; ?>" class="button button--dark">Sužinok daugiau</a>
-						<button data-popup="test-drive" class="button button--light" type="button">Bandomasis važevimas</button>
+						<a href="<?php echo $main_fields['forthing_v9_nuoroda']['value']['url']; ?>" class="button button--dark"><?php echo $main_fields['masino_modelio_pirmas_mygtukas']['value']; ?></a>
+						<button data-popup="test-drive" class="button button--light" type="button"><?php echo $main_fields['masino_modelio_antras_mygtukas']['value']; ?></button>
 					</div>
 				</div>
 
@@ -256,8 +256,8 @@ get_header('', ['main_data' => $main_fields]);
 					<h3><?php echo $main_fields['forthing_s7_nuoroda']['value']['title']; ?></h3>
 					<div class="car-card__price"><?php echo $main_fields['forthing_s7_kaina']['value']; ?></div>
 					<div class="car-card__actions flex flex-column">
-						<a href="<?php echo $main_fields['forthing_s7_nuoroda']['value']['url']; ?>" class="button button--dark">Sužinok daugiau</a>
-						<button data-popup="test-drive" class="button button--light" type="button">Bandomasis važevimas</button>
+						<a href="<?php echo $main_fields['forthing_s7_nuoroda']['value']['url']; ?>" class="button button--dark"><?php echo $main_fields['masino_modelio_pirmas_mygtukas']['value']; ?></a>
+						<button data-popup="test-drive" class="button button--light" type="button"><?php echo $main_fields['masino_modelio_antras_mygtukas']['value']; ?></button>
 					</div>
 				</div>
 
@@ -285,8 +285,8 @@ get_header('', ['main_data' => $main_fields]);
 					<h3><?php echo $main_fields['voyah_free_nuoroda']['value']['title']; ?></h3>
 					<div class="car-card__price"><?php echo $main_fields['voyah_free_kaina']['value']; ?></div>
 					<div class="car-card__actions flex flex-column">
-						<a href="<?php echo $main_fields['voyah_free_nuoroda']['value']['url']; ?>" class="button button--dark">Sužinok daugiau</a>
-						<button data-popup="test-drive" class="button button--light" type="button">Bandomasis važevimas</button>
+						<a href="<?php echo $main_fields['voyah_free_nuoroda']['value']['url']; ?>" class="button button--dark"><?php echo $main_fields['masino_modelio_pirmas_mygtukas']['value']; ?></a>
+						<button data-popup="test-drive" class="button button--light" type="button"><?php echo $main_fields['masino_modelio_antras_mygtukas']['value']; ?></button>
 					</div>
 				</div>
 
@@ -300,8 +300,8 @@ get_header('', ['main_data' => $main_fields]);
 					<h3><?php echo $main_fields['voyah_dream_nuoroda']['value']['title']; ?></h3>
 					<div class="car-card__price"><?php echo $main_fields['voyah_dream_kaina']['value']; ?></div>
 					<div class="car-card__actions flex flex-column">
-						<a href="<?php echo $main_fields['voyah_dream_nuoroda']['value']['url']; ?>" class="button button--dark">Sužinok daugiau</a>
-						<button data-popup="test-drive" class="button button--light" type="button">Bandomasis važevimas</button>
+						<a href="<?php echo $main_fields['voyah_dream_nuoroda']['value']['url']; ?>" class="button button--dark"><?php echo $main_fields['masino_modelio_pirmas_mygtukas']['value']; ?></a>
+						<button data-popup="test-drive" class="button button--light" type="button"><?php echo $main_fields['masino_modelio_antras_mygtukas']['value']; ?></button>
 					</div>
 				</div>
 
@@ -315,8 +315,8 @@ get_header('', ['main_data' => $main_fields]);
 					<h3><?php echo $main_fields['voyah_courage_nuoroda']['value']['title']; ?></h3>
 					<div class="car-card__price"><?php echo $main_fields['voyah_courage_kaina']['value']; ?></div>
 					<div class="car-card__actions flex flex-column">
-						<a href="<?php echo $main_fields['voyah_courage_nuoroda']['value']['url']; ?>" class="button button--dark">Sužinok daugiau</a>
-						<button data-popup="test-drive" class="button button--light" type="button">Bandomasis važevimas</button>
+						<a href="<?php echo $main_fields['voyah_courage_nuoroda']['value']['url']; ?>" class="button button--dark"><?php echo $main_fields['masino_modelio_pirmas_mygtukas']['value']; ?></a>
+						<button data-popup="test-drive" class="button button--light" type="button"><?php echo $main_fields['masino_modelio_antras_mygtukas']['value']; ?></button>
 					</div>
 				</div>
 
@@ -342,8 +342,8 @@ get_header('', ['main_data' => $main_fields]);
 					<h3><?php echo $main_fields['mhero_nuoroda']['value']['title']; ?></h3>
 					<div class="car-card__price"><?php echo $main_fields['mhero_kaina']['value']; ?></div>
 					<div class="car-card__actions flex flex-column">
-						<a href="<?php echo $main_fields['mhero_nuoroda']['value']['url']; ?>" class="button button--dark">Sužinok daugiau</a>
-						<button data-popup="test-drive" class="button button--light" type="button">Bandomasis važevimas</button>
+						<a href="<?php echo $main_fields['mhero_nuoroda']['value']['url']; ?>" class="button button--dark"><?php echo $main_fields['masino_modelio_pirmas_mygtukas']['value']; ?></a>
+						<button data-popup="test-drive" class="button button--light" type="button"><?php echo $main_fields['masino_modelio_antras_mygtukas']['value']; ?></button>
 					</div>
 				</div>
 
